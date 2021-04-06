@@ -1,1 +1,25 @@
-gd
+var data = [
+	{
+		name:"WhatsApp message tool",
+		des:"A simple tool to message numbers without actually saving them in your phone. And also has some other things up its sleeves!",
+		src:"projects/apps/whatsapp/index.html",
+	},{
+		name:"Space shooter",
+		des:"A simple space based shooter game written in js. It's not that developed. But still playable!",
+		src:"projects/games/shooter/index.html"
+	},{
+		name:"Adding sine waves",
+		des:"A simple demonstration of added sine waves.",
+		src:"projects/other/sinWaves/index.html",
+	},{
+		name:"ray cast demo",
+		des:"A 2D demo of ray casting. With a pre built world, with debug options. Enjoy!",
+		src:"projects/other/rayCast/index.html",
+	}
+];
+
+data.sort(function(a,b){
+    if(a.name < b.name){return -1;}
+    if(a.name > b.name){return 1;}
+    return 0;
+})
