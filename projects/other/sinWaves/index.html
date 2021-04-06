@@ -1,1 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta name="viewport" content="width= device-width, initial-scale=1.0"> 
+<style>
+*{
+  	box-sizing:border-box;
+  	font-family:monospace;
+}
+*:focus {
+  	outline:none;	
+}
+body {
+	margin:0px;
+	height:100vh;
+}
+canvas {
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:10;
+	background-color:transparent;
+}
+#reset {
+	position:fixed;
+	z-index:11;
+	width:100px;
+	height:40px;
+	font-weight:800;
+	border-radius:2px;
+	bottom:40px;
+	left:calc(50% - 50px);
+	user-select:none;
+}
+</style>
 
+</head>
+<body>
+	<canvas></canvas>
+	<button id="reset">Reset</button>
+<script>
+//functions
+function s(x){
+    return document.querySelector(x)
+};
+function random(x,y){
+	return x+Math.random()*(y-x);
+}
+CanvasRenderingContext2D.prototype.line=function(x1,y1,x2,y2){
+	var ctx=this;
+	ctx.beginPath();
+		ctx.lineWidth = 2.5;
+		ctx.moveTo(x1,y1);
+		ctx.lineTo(x2,y2);
+		ctx.stroke();
+	ctx.closePath();
+};
+CanvasRenderingContext2D.prototype.box = function(x,y,w,h,c){
+	ctx.beginPath();
+		ctx.fillStyle = c || "black";
+		ctx.fillRect(x,y,w,h);
+	ctx.closePath();
+};
+</script>
+<script>
+let canvas = s("canvas");
+let ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const twoPi = 2*Math.PI;
+
+
+class Wave {
+	constructor(amp,time,phase){
+		this.amp = amp;
+		this.time = time || 1;
+		this.phase = phase || 0;
+	}
+	f(t){
+		return (this.amp*Math.sin(((2*Math.PI*t)/this.time)+this.phase));
+	}
+	updatePhase(p){
+		this.phase += p;
+	}
+	setup(pos,startY){
+		this.pos = pos;
+		this.startY = startY;
+		this.prev = [0,startY];
+		this.y = startY;
+	}
+	draw(x){
+		let pos = this.pos;
+		let n = ((x/(pos[1]-pos[0]))*twoPi);
+		let y = this.startY - this.f(n);
+		this.y = this.f(n);
+		ctx.box(x-1,y-1,2,2);
+		if(this.prev){
+			ctx.line(this.prev[0],this.prev[1],x,y);
+			this.prev = [x,y];
+		}
+	}
+}
+
+let waves = [];
+for(let i=0;i<10;i++){
+	let w = new Wave(random(10,50),random(0,8),random(-twoPi,twoPi));
+	w.setup([0,canvas.width],canvas.height/2);	
+	waves.push(w);
+}
+
+setInterval(innit,30);
+
+function innit(){
+	ctx.clearRect(0,0,canvas.width,canvas.height);
+	
+	for(let wave of waves){	
+		wave.updatePhase(1/(twoPi*2));
+		wave.prev = [];
+	}
+	for(let i=0;i<canvas.width;i+=1){
+		let newY = 0;
+		let lastY = 0;
+		for(let w of waves){
+			newY += w.f((i/canvas.width)*twoPi);
+			lastY += w.f(((i-1)/canvas.width)*twoPi);		
+		}
+		ctx.box(i-1,(canvas.height/2)-newY-1,2,2,"green");
+		ctx.line(i,(canvas.height/2)-newY,i-1,(canvas.height/2)-lastY,2,2);
+	}
+}
+
+s("#reset").addEventListener('click',function(){
+	waves = [];
+	for(let i=0;i<10;i++){
+		let w = new Wave(random(10,50),random(0,8),random(-twoPi,twoPi));
+		w.setup([0,canvas.width],canvas.height/2);	
+		waves.push(w);
+	}
+});
+</script>
+</body>
+</html>
