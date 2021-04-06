@@ -1,0 +1,21 @@
+:root {
+	--shadow:0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+@font-face {
+	font-family:font;
+	src:url(../font/text.ttf);
+}
+
+*{
+  	box-sizing:border-box;
+  	font-family:font;
+  	transition:background-color 0.1s 0s , color 0.1s 0s;
+}
+*:focus {
+  	outline:none;	
+}
+body {
+	margin:0px;
+	height:100vh;
+}
