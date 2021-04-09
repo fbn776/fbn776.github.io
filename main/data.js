@@ -19,6 +19,10 @@ var data = [
 		name:"Quotes v1",
 		des:"A simple web app that has some popular quotes that runs like a slideshow",
 		src:"projects/other/quoteV1/index.html",
+	},{
+		name:"Quotes v2",
+		des:"Its just like 'quotes v1' but better! Enjoy!",
+		src:"projects/other/quoteV2/index.html",
 	}
 ];
 
