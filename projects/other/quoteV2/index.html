@@ -1,1 +1,143 @@
-ebe
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width= device-width, initial-scale=1.0"> 
+	<script src="lib.js"></script>
+	<link rel="stylesheet" href="swiper-bundle.min.css">
+<style>
+:root {
+	--shadow:0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.flex {
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+*{
+  	box-sizing:border-box;
+}
+*:focus {
+	outline:none;
+}
+body {
+	margin:0px;
+	height:100vh;
+	background-color:#313131;
+}
+.slide-cont {
+	position:fixed;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+}
+.swiper-slide {
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+.main-ctx {
+	margin:0% 10%;
+	font-size:25px;
+	font-family:cursive;
+}
+.main-ctx .txt {
+	font-weight:800;
+}
+.main-ctx .aur {
+	text-align:right;
+	font-size:20px;
+}
+</style>
+<body>
+	<div class="slide-cont">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide" style="background-color:#FF3D00;color:white;">
+				<div class="main-ctx">
+					<p class="txt">Welcome!</p>
+					<p class="aur">-fbn776</p>
+				</div>
+			</div>
+		</div>
+	</div>
+<script src="swiper-bundle.min.js"></script>
+<script src="../quoteV1/quotes.js"></script>
+<script>
+function shuffle(array) {
+  	var currentIndex = array.length, temporaryValue, randomIndex;
+  	while (0 !== currentIndex) {
+    	randomIndex = Math.floor(Math.random() * currentIndex);
+    	currentIndex -= 1;
+    	temporaryValue = array[currentIndex];
+    	array[currentIndex] = array[randomIndex];
+    	array[randomIndex] = temporaryValue;
+ 	}
+  	return array;
+}
+shuffle(quotes);
+
+
+var colors = [
+	'#311B92','#9575CD','#4A148C','#6A1B9A',
+	'#BA68C8','#880E4F','#E91E63','#F44336',
+	'#FFEA00','#FFEE58','#C6FF00','#76FF03',
+	'#8BC34A','#00E676','#4CAF50','#1DE9B6',
+	'#26A69A','#0097A7','#00E5FF','#00BCD4',
+	'#0091EA','#00B0FF','#29B6F6','#2962FF',
+	'#42A5F5','#1565C0','#3D5AFE','#536DFE',
+	'#283593','#5C6BC0','#607D8B','#263238',
+	'#bdbdbd','#424242','#FF3D00','#FF5722',
+	'#FB8C00','#FF9100'
+];
+
+function hexToRgb(hex) {
+  	var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  	return result ? {
+    	r: parseInt(result[1], 16),
+    	g: parseInt(result[2], 16),
+    	b: parseInt(result[3], 16)
+	} : null;
+}
+function getOppColor(rgb){
+	var color = Math.round(((parseInt(rgb.r) * 299) + (parseInt(rgb.g) * 587) + (parseInt(rgb.b) * 114)) / 1000); 
+	var textColor = (color > 125) ? 'black' : 'white'; 
+	return textColor;
+}
+
+</script>
+<script>
+var swiperWarp = s(".swiper-wrapper");
+
+for(let a of quotes){
+	let txt = a.txt,
+		aur = a.aur;
+	
+	let elm = document.createElement("div");
+	elm.setAttr({
+		class:"swiper-slide",
+	});
+	elm.innerHTML = `<div class="main-ctx"><p class="txt">${txt}</p><p class="aur">-${aur}</p></div>`;
+	
+	swiperWarp.appendChild(elm);
+	let color = colors.randomItem();
+	let rgb = hexToRgb(color);
+	elm.style.backgroundColor = color;
+	elm.style.color = getOppColor(rgb)
+}
+
+
+var swiper = new Swiper('.slide-cont', {
+	effect: 'flip',
+	grabCursor: true,
+	loop:true,
+	navigation: {
+		nextEl:'.slide-cont',
+	},
+	autoplay: {
+		delay:5000,
+		disableOnInteraction:false,
+	},
+});
+</script>
+</body>
+</html>
