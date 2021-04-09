@@ -15,6 +15,10 @@ var data = [
 		name:"ray cast demo",
 		des:"A 2D demo of ray casting. With a pre built world, with debug options. Enjoy!",
 		src:"projects/other/rayCast/index.html",
+	},{
+		name:"Quotes v1",
+		des:"A simple web app that has some popular quotes that runs like a slideshow",
+		src:"projects/other/quoteV1/index.html",
 	}
 ];
 
