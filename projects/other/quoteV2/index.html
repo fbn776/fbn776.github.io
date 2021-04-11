@@ -87,7 +87,19 @@ var colors = [
 	'#42A5F5','#1565C0','#3D5AFE','#536DFE',
 	'#283593','#5C6BC0','#607D8B','#263238',
 	'#bdbdbd','#424242','#FF3D00','#FF5722',
-	'#FB8C00','#FF9100'
+	'#FB8C00','#FF9100',["#3C8CE7","#00EAFF"],
+	["#70F570","#49C628"],["#3B2667","#BC78EC"],
+	["#69FF97","#00E4FF"],["#6B73FF","#000DFF"],
+	["#FD6E6A","#FFC600"],["#FF6FD8","#3813C2"],
+	["#97ABFF","#123597"],["#2AFADF","#4C83FF"],
+	["#F05F57","#360940"],["#79F1A4","#0E5CAD"],
+	["#52E5E7","#130CB7"],["#EEAD92","#6018DC"],
+	["#92FFC0","#002661"],["#FEC163","#DE4313"],
+	["#5EFCE8","#736EFE"],["#F761A1","#8C1BAB"],
+	["#FCCF31","#F55555"],["#F97794","#623AA2"],
+	["#81FBB8","#28C76F"],["#90F7EC","#32CCBC"],
+	["#CE9FFC","#7367F0"],["#FEB692","#EA5455"],
+	["#ABDCFF","#0396FF"],["#FDEB71","#F8D800"],
 ];
 
 function hexToRgb(hex) {
@@ -119,10 +131,30 @@ for(let a of quotes){
 	elm.innerHTML = `<div class="main-ctx"><p class="txt">${txt}</p><p class="aur">-${aur}</p></div>`;
 	
 	swiperWarp.appendChild(elm);
+	
 	let color = colors.randomItem();
-	let rgb = hexToRgb(color);
-	elm.style.backgroundColor = color;
-	elm.style.color = getOppColor(rgb)
+	console.log(color);
+	if(color instanceof Array){
+		let c1 = color[0],
+			c2 = color[1];
+		let rgb1 = hexToRgb(c1);
+		let rgb2 = hexToRgb(c2);
+		
+		let avg = {
+			r:(rgb1.r+rgb2.r)/2,
+			g:(rgb1.g+rgb2.g)/2,
+			b:(rgb1.b+rgb2.b)/2,
+		};
+		let opp = getOppColor(avg);
+		let angle = Math.floor(random(0,360));
+		let bg = `linear-gradient(${angle}deg,${c1},${c2})`;
+		elm.style.background = bg;
+		elm.style.color = opp;
+	}else {
+		let rgb = hexToRgb(color);
+		elm.style.backgroundColor = color;
+		elm.style.color = getOppColor(rgb);
+	}
 }
 
 
