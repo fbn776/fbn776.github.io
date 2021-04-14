@@ -26,7 +26,7 @@ var data = [
 	},{
 		name:"Simple particle sim",
 		des:"This is a simple charged particles sim written in js. And works using the Coulomb's inverse square law!",
-		src:"projects/other/particles sim/index.html",
+		src:"projects/other/particles_sim/index.html",
 	}
 ];
 
