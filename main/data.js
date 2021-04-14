@@ -23,6 +23,10 @@ var data = [
 		name:"Quotes v2",
 		des:"Its just like 'quotes v1' but better! Enjoy!",
 		src:"projects/other/quoteV2/index.html",
+	},{
+		name:"Simple particle sim",
+		des:"This is a simple charged particles sim written in js. And works using the Coulomb's inverse square law!",
+		src:"projects/other/particles sim/index.html",
 	}
 ];
 
