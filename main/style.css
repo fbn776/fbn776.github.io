@@ -1,34 +1,3 @@
-:root {
-	/*Light and dark theme styles*/	
-	/*Light theme*/
-	--bg-light:#eeeeee;
-	--fbn-color-light:black;
-	--icons-invert-light:invert(0%);
-	--menu-color-light:#DCDCDC;
-	--main-text-color-light:#313131;
-	--bg-color-light:rgba(0,0,0,0.5);
-	
-	
-	/*Dark theme*/
-	--bg-dark:#212121;
-	--fbn-color-dark:white;
-	--icons-invert-dark:invert(100%);
-	--menu-color-dark:#414141;
-	--main-text-color-dark:#C0C0C0;
-	--bg-color-dark:rgba(0,0,0,0.7);	
-}
-:root {
-	--bg:var(--bg-light);
-	--fbn-color:var(--fbn-color-light);
-	--icons-invert:var(--icons-ivert-light);
-	--menu-color:var(--menu-color-light);
-	--main-text-color:var(--main-text-color-light);
-	--bg-color:var(--bg-color-light);
-}
-body {
-	background-color:var(--bg);
-}
-
 /*Top section styles*/
 
 #top-section {
