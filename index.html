@@ -9,39 +9,10 @@
 	<script src="main/data.js"></script>
 	<link rel="stylesheet" href="main/theme.css">	
 	<link rel="stylesheet" href="main/style.css">
-
-<style>
-:root {
-	/*Light and dark theme styles*/	
-	/*Light theme*/
-	--bg-light:#eeeeee;
-	--fbn-color-light:black;
-	--icons-invert-light:invert(0%);
-	--menu-color-light:#DCDCDC;
-	--main-text-color-light:#313131;
-	--bg-color-light:rgba(0,0,0,0.5);
-	
-	
-	/*Dark theme*/
-	--bg-dark:#212121;
-	--fbn-color-dark:white;
-	--icons-invert-dark:invert(100%);
-	--menu-color-dark:#414141;
-	--main-text-color-dark:#C0C0C0;
-	--bg-color-dark:rgba(0,0,0,0.7);	
-}
-:root {
-	--bg:var(--bg-light);
-	--fbn-color:var(--fbn-color-light);
-	--icons-invert:var(--icons-ivert-light);
-	--menu-color:var(--menu-color-light);
-	--main-text-color:var(--main-text-color-light);
-	--bg-color:var(--bg-color-light);
-}
-body {
-	background-color:var(--bg);
-}
-</style>
+	<script
+      src="https://kit.fontawesome.com/e6fc37bdee.js"
+      crossorigin="anonymous"
+    ></script>
 </head>
 <body>
 
@@ -53,9 +24,7 @@ body {
 					<img src="icons/settings.png">
 				</div>
 				<div id="menu-bar-main" state="0">
-					<a href="https://www.instagram.com/fbn776/"><img src="icons/brand-instagram.png"></a>
-					<a href="https://twitter.com/fbn776"><img src="icons/brand-twitter.png"></a>	
-					<a href="https://github.com/fbn776"><img src="icons/brand-github.png"></a>	
+					<a href=""><i class="far fa-envelope fa-lg"></i></a>
 					<a id="theme-changer" theme="" onclick="changeTheme()"><img src="icons/moon.png"></a>		
 				</div>
 			</div>
@@ -64,6 +33,13 @@ body {
 	<section id="bottom-section">
 		<p id="projects_title">Projects</p>
 	</section><br>
+	<footer id="footer">
+		<a href="https://twitter.com/fbn776" class="fot-a"><i class="fab fa-twitter"></i></a>
+		<a href="" class="fot-a"><i class="fab fa-facebook-f"></i></a>
+		<a href="https://www.instagram.com/fbn776/" class="fot-a"><i class="fab fa-instagram"></i></a>
+		<a href="https://github.com/fbn776" class="fot-a"><i class="fab fa-github"></i></a>
+		  <p class="fot-p">© Copyright 2020 fbn776</p>
+		</footer>
 <script>
 var currTheme = localStorage.getItem("theme") || "light";
 var css_root = document.querySelector(':root');
