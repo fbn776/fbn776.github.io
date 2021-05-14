@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Overview</title>
+	<!--Libs and other stuffs-->
+	<meta name="viewport" content="width= device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/lib.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<script src="../../../../libs/w3Syntax/highlighter.js"></script>
+	<script src="../js/list.js"></script>
+	<link rel="stylesheet" href="../../../../libs/katex/katex.min.css">
+	<script src="../../../../libs/katex/katex.min.js"></script>
+	<script src="../../../../libs/matrix/matrix.js"></script>
+</head>
+<body>
+	<div class="main_frame">
+		<div class="header">
+			<div class="menu_bar">
+				<span class="menu_icon" state="0" onclick="openOrCloseNav(this)">&#9776;</span>
+				<div class="side_menu">
+					<div class="side_menu_cont">
+						<a href="../index.html" isCurr="false" class="side_menu_elm">
+							Home
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="title">Matrix.js</div>
+		</div>
+		<div class="other_frame">
+			<div class="docs_title">Matrix operations</div><br>
+			<div class="docs_des">
+				<div class="docs_intro">
+					This page contains documentation on basic matrix operations such as addition, subraction, multiplication.
+					
+				<br><br><br>
+				</div>
+				<div class="doc_elm" style="height:0px;padding:0px;"></div>
+				<div class="doc_elm">
+					<tt>Matrix.add(A,B)</tt>
+					<des>
+						Adds to matrices of same order and returns the resultant matrix.
+					</des>
+					<para><pt>Parameters</pt>
+						<l>A: Object (matrix)</l>
+						<l>B: Object (matrix)
+					</para>
+					<return><pt>Return</pt>
+						<l>Object (matrix)</l>
+					</return>
+				</div>
+				<div class="doc_elm">
+					<tt>Matrix.sub(A,B)</tt>
+					<des>
+						Subtract two matrices of same order and returns the resultant matrix.
+					</des>
+					<para><pt>Parameters</pt>
+						<l>A: Object (matrix)</l>
+						<l>B: Object (matrix)</l>
+					</para>
+					<return><pt>Return</pt>
+						<l>Object (matrix)</l>
+					</return>
+				</div>
+				<div class="doc_elm">
+					<tt>Matrix.multByScalar(A,c)</tt>
+					<des>
+						Multiples a matrix with a constant (scalar) and returns the resultant matrix.
+						<br>For example:<br><br>
+						<div class="codeElm" type="js">
+							let A = Matrix.create([--
+							   1,2,--
+							   3,4--
+							],2,2);
+							let c = 2;----
+							
+							let B = Matrix.multByScalar(A,c);--
+							/*--
+							B is:--
+							{--
+							  n:2,--
+							  m:2,--
+							  matrix:[--
+							     2,4,--
+							     6,8,--
+							  ]--
+							}--
+							*/--
+							console.log(B);
+						</div><br>
+						That is, this code does the same as:
+						<div class="mathElm">
+							A = \begin{bmatrix}
+							1 & 2 \\
+							3 & 4
+							\end{bmatrix}_{2×2} \newline
+							c = 2 \newline
+							B = cA \newline
+							ie, B = \begin{bmatrix}
+							2 & 4 \\
+							6 & 8
+							\end{bmatrix}_{2×2}						
+						</div>
+					</des>
+					<para><pt>Parameters</pt>
+						<l>A: Object (matrix)</l>
+						<l>B: Object (matrix)</l>
+					</para>
+					<return><pt>Return</pt>
+						<l>Object (matrix)</l>
+					</return>
+				</div>
+				<div class="doc_elm">
+					<tt>Matrix.mult(A,B)</tt>
+					<des>
+						This function multiples two matrices together and return the resultant matrix.<br>
+						For example:<br><br>
+						<div class="codeElm" type="js">
+							let A = Matrix.create([1,2,3,4],2,2);--
+							let B = Matrix.create([-1,-2,-3,-4],2,2);--
+							let C = Matrix.mult(A,B);--
+							/*--
+							C is:--
+							{n:2,m:2,--
+							  matrix:[-7,-10,-15,-22]--
+							}--
+							*/--
+							console.log(C);
+							</div><br>
+							That is, this code does the same as,
+							<div class="mathElm">
+							A = \begin{bmatrix}
+								1 & 2 \\
+								3 & 4
+							\end{bmatrix}\newline{}
+							\newline{}
+							B = \begin{bmatrix}
+								-1 & -2 \\
+								-3 & -4
+							\end{bmatrix} \newline{}
+							\newline{}
+							C = AB \newline{}
+							\newline{}
+							ie, C = \begin{bmatrix}
+								-7 & -10\\
+								-15 & -22
+							\end{bmatrix}								
+						</div>
+					</des>
+					<para><pt>Parameters</pt>
+						<l>A: Object (matrix)</l>
+						<l>B: Object (matrix)</l>
+					</para>
+					<return><pt>Return</pt>
+						<l>Object (matrix)</l>
+					</return>
+				</div>
+			</div>
+			<div class="next_prev">
+				<a id="prev_btn"><label>Previous</label></a>
+				<a id="next_btn"><label>Next</label></a>
+			</div>
+			<div class="footer">
+				<div class="footer_tt">Matrix.js<br></div>
+				<div class="icons_bar">
+					<a href="https://www.instagram.com/fbn776/"><img src="../../../../icons/brand-instagram.png"></a>
+					<a href="https://twitter.com/fbn776"><img src="../../../../icons/brand-twitter.png"></a>	
+					<a href="https://github.com/fbn776"><img src="../../../../icons/brand-github.png"></a>
+				</div>
+				<div class="made_by">Made by fbn776</div>
+			</div>
+		</div>
+	</div>
+<script src="../lib/library.js"></script>
+<script src="common/common.js"></script>
+<script>
+</script>
+</body>
+</html>
+<!--
+<div class="doc_elm">
+	<tt></tt>
+	<des></des>
+	<para><pt>Parameters</pt>
+	
+	</para>
+	<return><pt>Return</pt>
+
+	</return>
+</div>
+-->

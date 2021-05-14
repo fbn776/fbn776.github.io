@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Overview</title>
+	<!--Libs and other stuffs-->
+	<meta name="viewport" content="width= device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/lib.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<script src="../../../../libs/w3Syntax/highlighter.js"></script>
+	<script src="../js/list.js"></script>
+	<link rel="stylesheet" href="../../../../libs/katex/katex.min.css">
+	<script src="../../../../libs/katex/katex.min.js"></script>
+	<script src="../../../../libs/matrix/matrix.js"></script>
+</head>
+<body>
+	<div class="main_frame">
+		<div class="header">
+			<div class="menu_bar">
+				<span class="menu_icon" state="0" onclick="openOrCloseNav(this)">&#9776;</span>
+				<div class="side_menu">
+					<div class="side_menu_cont">
+						<a href="../index.html" isCurr="false" class="side_menu_elm">
+							Home
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="title">Matrix.js</div>
+		</div>
+		<div class="other_frame">
+			<div class="docs_title">Additional functions</div><br>
+			<div class="docs_des">
+				<div class="docs_intro">
+					This page contains additional functions, that you can use in matrix.js.
+				<br><br><br>
+				</div>
+				<div class="doc_elm" style="height:0px;padding:0px;"></div>
+				<div class="doc_elm">
+					<tt>Matrix.identityOf(A)</tt>
+					<des>
+						This function returns a new identity matrix of the same order as that of the given matrix.
+					</des>
+					<para><pt>Parameters</pt>
+						<l>A: Object (matrix)</l>
+					</para>
+					<return><pt>Return</pt>
+						<l>Object (matrix)</l>
+					</return>
+				</div>
+				<div class="doc_elm">
+					<tt>Matrix.symmetricOf(A)</tt>
+					<des>
+						This function returns a new symmetric matrix, that is related to the given matrix. The symmetric matrix is
+						<div class="mathElm">
+							B = A + A^{T}
+						</div>
+					</des>
+					<para><pt>Parameters</pt>
+						<l>A: Object (matrix)</l>
+					</para>
+					<return><pt>Return</pt>
+						<l>Object (matrix)</l>
+					</return>
+				</div>
+				<div class="doc_elm">
+					<tt>Matrix.skewOf(A)</tt>
+					<des>
+						This function returns a new skew symmetric matrix, that is related to the given matrix. The skew symmetric matrix is
+						<div class="mathElm">
+							B = A - A^{T}
+						</div>
+					</des>
+					<para><pt>Parameters</pt>
+						<l>A: Object (matrix)</l>
+					</para>
+					<return><pt>Return</pt>
+						<l>Object (matrix)</l>
+					</return>
+				</div>
+				<div class="doc_elm">
+					<tt>Matrix.randomElement(A)</tt>
+					<des>
+						Returns a random element of the given matrix.
+					</des>
+					<para><pt>Parameters</pt>
+						<l>A: Object (matrix)</l>
+					</para>
+					<return><pt>Return</pt>
+						<l>Number</l>
+					</return>
+				</div>
+				<div class="doc_elm">
+					<tt>Matrix.generateRandomMatrix(order,minmax,toInt)</tt>
+					<des>
+						This function generates a random matrix with the given parameters.<br>
+						The parameters are:<br><br>
+						Order: Which specifies the order of the random matrix. It should be an array of length 2, with the following format, [n,m]<br>
+						minmax: Which specifies the minimum and maximum value, between which the random number should be generated. It's format is [min,max-1]. The default value is [0,(order[0]*order[1])+1]<br>
+						toInt: Which specifies, whether to convert the values to an integer. The default value is true. If it is set to false, then all the values are floats.
+						<br><br>
+						<div class="codeElm" type="js">
+						//Generates a matrix of order 2 &times 2. It's minimum value is 0 and maximum value is 9   --						
+						var A = Matrix. generateRandomMatrix([2,2],[0,9],true);
+						</div>
+					</des>
+					<para><pt>Parameters</pt>
+						<l>order: array</l>
+						<l>mimmax: array</l>
+						<l>toInt: boolean</l>
+					</para>
+					<return><pt>Return</pt>
+						<l>Object (matrix)</l>
+					</return>
+				</div>
+				<div class="doc_elm">
+					<tt>Matrix.toTable(A)</tt>
+					<des>
+						This function converts a matrix to a HTML table. It returns an object with a function 'addTo(element)' as a property.<br>
+						The 'addTo(element)' takes in a HTML element as an argument. The HTML element is the place where it is created.
+						For example:<br><br>
+						<div class="codeElm" type="js">
+						var A = Matrix.create([1,2,3,4],2,2);----
+						//Creates a table element--
+						var table = Matrix.toTable(A);----
+						//Adds the table element to the body--
+						table.addTo(document.body);
+						</div><br><br>
+						Demo: <br>
+						<div class="demoElm" id="eg001"></div>
+					</des>
+					<para><pt>Parameters</pt>
+						<l>A: Object (matrix)</l>
+					</para>
+					<return><pt>Return</pt>
+						<l></l>
+					</return>
+				</div>
+			</div>
+			<div class="next_prev">
+				<a id="prev_btn"><label>Previous</label></a>
+				<a id="next_btn"><label>Next</label></a>
+			</div>
+			<div class="footer">
+				<div class="footer_tt">Matrix.js<br></div>
+				<div class="icons_bar">
+					<a href="https://www.instagram.com/fbn776/"><img src="../../../../icons/brand-instagram.png"></a>
+					<a href="https://twitter.com/fbn776"><img src="../../../../icons/brand-twitter.png"></a>	
+					<a href="https://github.com/fbn776"><img src="../../../../icons/brand-github.png"></a>
+				</div>
+				<div class="made_by">Made by fbn776</div>
+			</div>
+		</div>
+	</div>
+<script src="../lib/library.js"></script>
+<script src="common/common.js"></script>
+<script>
+let eg001Elm = s("#eg001");
+const eg001 = (elm)=>{
+	let A = Matrix.create([1,2,3,4],2,2);
+	Matrix.toTable(A).addTo(elm);
+};
+eg001(eg001Elm);
+</script>
+</body>
+</html>
+<!--
+<div class="doc_elm">
+	<tt></tt>
+	<des></des>
+	<para><pt>Parameters</pt>
+	
+	</para>
+	<return><pt>Return</pt>
+
+	</return>
+</div>
+-->
