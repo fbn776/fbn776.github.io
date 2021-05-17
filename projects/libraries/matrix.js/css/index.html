@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Overview</title>
+	<!--Libs and other stuffs-->
+	<meta name="viewport" content="width= device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/lib.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="../../../libs/w3Syntax/highlighter.js"></script>
+</head>
+<body>
+	<section class="main">
+		<h1 class="heading">
+			Matrix.js<br>
+			<a href="https://github.com/fbn776/Matrix.js">
+				<span class="github-bar">
+					<label>Github</label>
+					<img src="../../../icons/brand-github.png">
+				</span>
+			</a>
+		</h1>
+		<div class="section">
+			<div class="title">Overview</div>
+			<div class="body">
+				<p>A simple, fast and lightweight JavaScript library for doing mathematical operations on matrices, with no external dependencies.</p>
+				<p>You can create matrices and perform different types of calculations in code with very simple syntax. Matrix.js is fully free to use. And you can use it as you like.</p>
+				<p>Learn more about matrix.js by going down below</p>
+			</div>
+		</div><br>
+		<div class="section main_overview">
+			<div class="title">Get Started</div>
+			<div class="body">
+				<p>
+					To get started, you need to first download matrix.js. You can download matrix.js from 
+					<a href="#">here</a>
+				</p>
+				<p>
+					After downloading matrix.js, use the code below inside your HTML code.<br>
+					<div class="codeElm" type="html">
+						_(script src="matrix.js")__(/script)_
+					</div>
+				</p>
+				<p>
+					Matrix.js uses 'Matrix' as a namespace that contains all the functions. This is to avoid name collision with your code.
+				</p>
+				<p>
+					Creating Matrices:
+					<div class="codeElm" type="js">
+					/*Creates a matrix of order 2&times;2*/<br>
+					var A = {--
+					  n:2,--
+					  m:2,--
+					  matrix:[--
+					     1,2,--
+					     3,4,--			
+					  ]--
+					}--
+					var tf = Matrix.isMatrix(A);--
+					//true
+					</div>
+				</p>
+				<p>
+					Creating a Matrix using matrix.js:
+					<div class="codeElm" type="js">
+						/*Creates a matrix of order 2&times;2*/<br>						
+						var A = Matrix.create([--
+						   1,2,--
+						   3,4--
+						],2,2);--
+						/*Returns and object same as the object from the above code*/
+					</div>
+				</p>
+				<p>
+					You can do calculations on matrices like adding to two matrices, multiplying two matrices, finding the determenemt of a matrix etc. To learn more read the documentation.
+				</p>
+			</div>
+		</div><br>
+		<div class="section buttons_section">
+			<a href="https://github.com/fbn776/Matrix.js/archive/refs/heads/main.zip" class="button_link more_sec_btn">Download</a>
+			<a href="docs/basics.html" class="button_link more_sec_btn">Docs</a><br><br>
+			<div class="icons_bar">
+				<a href="https://www.instagram.com/fbn776/"><img src="../../../icons/brand-instagram.png"></a>
+				<a href="https://twitter.com/fbn776"><img src="../../../icons/brand-twitter.png"></a>	
+				<a href="https://github.com/fbn776"><img src="../../../icons/brand-github.png"></a>
+			</div>
+		</div><br>
+	</section>
+<script src="lib/library.js"></script>
+<script>
+</script>
+</body>
+</html>
