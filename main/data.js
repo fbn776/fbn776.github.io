@@ -27,6 +27,10 @@ var data = [
 		name:"Simple particle sim",
 		des:"This is a simple charged particles sim written in js. And works using the Coulomb's inverse square law!",
 		src:"projects/other/particles_sim/index.html",
+	},{
+		name:"MatrixJS",
+		des:"Matrix.js is a simple js library, Using this you can use matrices in your JavaScript code",
+		src:"projects/libraries/matrix.js/index.html",
 	}
 ];
 
