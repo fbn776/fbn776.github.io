@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<!--Libs and other stuffs-->
 	<meta name="viewport" content="width= device-width, initial-scale=1.0">
@@ -7,42 +8,45 @@
 	<script src="libs/lib.js"></script>
 	<link rel="stylesheet" href="libs/lib.css">
 	<script src="main/data.js"></script>
-	<link rel="stylesheet" href="main/theme.css">	
+	<link rel="stylesheet" href="main/theme.css">
 	<link rel="stylesheet" href="main/style.css">
 
-<style>
-:root {
-	/*Light and dark theme styles*/	
-	/*Light theme*/
-	--bg-light:#eeeeee;
-	--fbn-color-light:black;
-	--icons-invert-light:invert(0%);
-	--menu-color-light:#DCDCDC;
-	--main-text-color-light:#313131;
-	--bg-color-light:rgba(0,0,0,0.5);
-	
-	
-	/*Dark theme*/
-	--bg-dark:#212121;
-	--fbn-color-dark:white;
-	--icons-invert-dark:invert(100%);
-	--menu-color-dark:#414141;
-	--main-text-color-dark:#C0C0C0;
-	--bg-color-dark:rgba(0,0,0,0.7);	
-}
-:root {
-	--bg:var(--bg-light);
-	--fbn-color:var(--fbn-color-light);
-	--icons-invert:var(--icons-ivert-light);
-	--menu-color:var(--menu-color-light);
-	--main-text-color:var(--main-text-color-light);
-	--bg-color:var(--bg-color-light);
-}
-body {
-	background-color:var(--bg);
-}
-</style>
+	<style>
+		:root {
+			/*Light and dark theme styles*/
+			/*Light theme*/
+			--bg-light: #eeeeee;
+			--fbn-color-light: black;
+			--icons-invert-light: invert(0%);
+			--menu-color-light: #DCDCDC;
+			--main-text-color-light: #313131;
+			--bg-color-light: rgba(0, 0, 0, 0.5);
+
+
+			/*Dark theme*/
+			--bg-dark: #212121;
+			--fbn-color-dark: white;
+			--icons-invert-dark: invert(100%);
+			--menu-color-dark: #414141;
+			--main-text-color-dark: #C0C0C0;
+			--bg-color-dark: rgba(0, 0, 0, 0.7);
+		}
+
+		:root {
+			--bg: var(--bg-light);
+			--fbn-color: var(--fbn-color-light);
+			--icons-invert: var(--icons-ivert-light);
+			--menu-color: var(--menu-color-light);
+			--main-text-color: var(--main-text-color-light);
+			--bg-color: var(--bg-color-light);
+		}
+
+		body {
+			background-color: var(--bg);
+		}
+	</style>
 </head>
+
 <body>
 
 	<section id="top-section">
@@ -54,9 +58,9 @@ body {
 				</div>
 				<div id="menu-bar-main" state="0">
 					<a href="https://www.instagram.com/fbn776/"><img src="icons/brand-instagram.png"></a>
-					<a href="https://twitter.com/fbn776"><img src="icons/brand-twitter.png"></a>	
-					<a href="https://github.com/fbn776"><img src="icons/brand-github.png"></a>	
-					<a id="theme-changer" theme="" onclick="changeTheme()"><img src="icons/moon.png"></a>		
+					<a href="https://twitter.com/fbn776"><img src="icons/brand-twitter.png"></a>
+					<a href="https://github.com/fbn776"><img src="icons/brand-github.png"></a>
+					<a id="theme-changer" theme="" onclick="changeTheme()"><img src="icons/moon.png"></a>
 				</div>
 			</div>
 		</div>
@@ -64,31 +68,32 @@ body {
 	<section id="bottom-section">
 		<p id="projects_title">Projects</p>
 	</section><br>
-<script>
-var currTheme = localStorage.getItem("theme") || "light";
-var css_root = document.querySelector(':root');
-let themeChangerBtn = s("#theme-changer");
-var bottom = s("#bottom-section");
-</script>
-<script src="libs/mainLib.js"></script>
-<script src="main/script.js"></script>
-<script src="main/data.js"></script>
-<script>
-function createPanel(name,des,link){
-	let a = document.createElement("a");
-	a.setAttr({
-		class:"projects",
-		href:link,
-	});
-	a.innerHTML = `<name>${name}</name><des>${des}</des>`;
-	
-	bottom.appendChild(a);
-}
+	<script>
+		var currTheme = localStorage.getItem("theme") || "light";
+		var css_root = document.querySelector(':root');
+		let themeChangerBtn = s("#theme-changer");
+		var bottom = s("#bottom-section");
+	</script>
+	<script src="libs/mainLib.js"></script>
+	<script src="main/script.js"></script>
+	<script src="main/data.js"></script>
+	<script>
+		function createPanel(name, des, link) {
+			let a = document.createElement("a");
+			a.setAttr({
+				class: "projects",
+				href: link,
+			});
+			a.innerHTML = `<name>${name}</name><des>${des}</des>`;
+
+			bottom.appendChild(a);
+		}
 
 
-for(let a of data){
-	createPanel(a.name,a.des,a.src);
-}
-</script>
+		for (let a of data) {
+			createPanel(a.name, a.des, a.src);
+		}
+	</script>
 </body>
+
 </html>
