@@ -1,0 +1,309 @@
+:root {
+	--overflow-shadow:1px 0px 3px rgba(0,0,0,0.5) inset ,
+	0px 1px 3px rgba(0,0,0,0.5) inset ,
+	-1px 0px 3px rgba(0,0,0,0.5) inset,
+	0px -1px 3px rgba(0,0,0,0.5) inset;
+	
+	--m-width:2.5px;
+}
+.matrix_display_table {
+	width:auto;
+	height:auto;
+	position:relative;
+	padding:4px 8px;
+	transition:0.3s;
+}
+.matrix_display_table order {
+	position:absolute;
+	width:55px;
+	right:-60px;
+	bottom:5px;
+	font-weight:800;
+}
+.matrix_display_table td {
+	padding:8px;
+	font-weight:800;
+	font-family:monospace;
+}
+.matrix_display_table left , .matrix_display_table right{
+	position:absolute;
+	background-color:#212121;
+	display:inline-block;
+	width:var(--m-width);
+	border-radius:3px;
+}
+.matrix_display_table left {
+	left:0;
+	top:5px;
+	bottom:5px;
+}
+.matrix_display_table right {
+	right:0;
+	top:5px;
+	bottom:5px;
+}
+.matrix_display_table left:before , .matrix_display_table left:after , .matrix_display_table right:before , .matrix_display_table right:after {
+	content:'';
+	position:absolute;
+	width:10px;
+	height:var(--m-width);/*3px;*/
+	background-color:#212121;
+	border-radius:3px;
+}
+.matrix_display_table left:after {
+	bottom:0;
+}
+.matrix_display_table right:before {
+	right:0;
+}
+.matrix_display_table right:after {
+	right:0;
+	bottom:0;
+}
+calc-des {
+	display:block;
+	margin-bottom:10px;
+}
+.calc-area {
+	display:block;
+}
+.calc-area .matrix-main-cont {
+	margin-bottom:40px;
+}
+.calc-area .matrix-calc-cont {
+	background-color:#CFD8DC;
+	position:relative;
+	overflow:hidden;
+	border-radius:0px 4px 4px 4px;
+	display:block;
+	min-height:70px;
+	height:auto;
+	display:block;
+	margin:0px 0px;
+	margin-top:0px;
+}
+.calc-area .matrix-calc-cont .create-new-btn {
+	display:block;
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	transition:opacity 0.2s;
+}
+.calc-area .matrix-calc-cont .create-new-btn button {
+	border:none;
+	border-radius:4px;
+	padding:8px 30px;
+	font-weight:800;
+	color:white;
+	background-color:#37474F;
+	opacity:0.8;
+	transition:transform 0.2s;
+}
+.calc-area .matrix-calc-cont .create-new-btn button:active {
+	transform:scale(0.8);
+}
+.calc-area .matrix-calc-cont .display {
+	padding:20px;
+	width:100%;
+	overflow:scroll;
+	font-size:10px;
+	font-weight:8000;
+	display:flex;
+	font-size:14px;
+	padding-right:30px;
+}
+.calc-area .matrix-main-cont .name {
+	position:relative;
+	font-size:12px;
+	width:auto;
+	background-color:#CFD8DC;
+	display:block;
+	width:40%;
+	padding:8px 15px;
+	border-radius:4px 4px 0px 0px;
+	color:black;
+	border-bottom:2px solid rgba(55,71,79,0.1);
+}
+.calc-area .matrix-calc-cont .display table {
+	margin:auto;
+}
+.calc-area .matrix-calc-cont .edit {
+	position:absolute;
+	bottom:0;
+	right:0;
+	width:95px;
+	height:30px;
+	border-radius:4px 0px 0px 0px;
+	background-color:rgba(0,0,0,0.5);
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	box-shadow:var(--shadow);
+	opacity:0.6;
+	transform:translateY(100%);
+	transition:transform 0.2s;
+}
+.calc-area .matrix-calc-cont .edit img {
+	height:65%;
+	filter:invert(100%);
+	margin:0px 3px;
+	transition:transform 0.1s;
+}
+.calc-area .matrix-calc-cont .edit img:active {
+	transform:scale(0.8);
+}
+.result-cont .create-new-btn {
+	opacity:0.4;
+	user-select:none;
+}
+.do-calc {
+	width:100%;
+	margin-bottom:40px;
+	text-align:center;
+	padding:15px;
+	border-radius:6px;
+	position:relative;
+}
+.do-calc button {
+	border:none;
+	border-radius:4px;
+	padding:10px 25px;
+	font-weight:800;
+	margin:0px;
+	color:white;
+	background-color:#455A64;
+	opacity:0.9;
+	transition:transform 0.2s;
+	box-shadow:var(--shadow);
+}
+.do-calc button:active {
+	transform:scale(0.8);
+}
+.result-cont {
+	max-height:0px;
+	transition:max-height 0.4s , opacity 0.4s , transform 0.4s;
+	overflow:hidden;
+	transform:scale(0);
+	opacity:0;
+}
+.result-area {
+	position:relative;
+}
+#error-msg {
+	width:100%;
+	text-align:center;
+	display:block;
+	background-color:#CFD8DC;
+	color:#546E7A;
+	opacity:0.9;
+	padding:20px 10px;
+	border-radius:4px;
+	transition:opacity 0.1s;
+}
+.suggested {
+	width:100%;
+	border-radius:4px;
+	margin:auto;
+	overflow:scroll;
+	opacity:0.9;
+}
+.suggested h2 {
+	display:block;
+	margin-bottom:16px;
+	font-size:20px;
+}
+.suggested .cont {
+	width:100%;
+	padding:0px 12px;
+}
+.suggested .cont button {
+	border:none;
+	display:block;
+	margin:8px 0px;
+	border-radius:3px;
+	padding:8px 14px;
+	font-weight:800;
+	background-color:#455A64;
+	transition:transform 0.2s;
+	position:relative;
+}
+@keyframes slide {
+	50% {
+		transform:translateX(-1px);
+	}
+	0% , 100% {
+		transform:translateX(1px);
+	}
+}
+.suggested .cont .prevLinkBtn:after {
+	position:absolute;
+	content:"Prev";
+	left:calc(100% + 10px);
+	top:calc(50% - (68%/2));
+	height:68%;
+	display:flex;
+	align-items:center;
+	padding:0px 8px 0px 12px;
+	border-radius:4px;
+	clip-path:polygon(16% 0, 100% 0, 100% 100%, 16% 100%, 0 51%);
+	background-color:#263238;
+	color:white;
+	font-size:11px;
+	width:35px;
+	justify-content:center;
+	opacity:0.9;
+	animation:slide 1.5s infinite ease-in-out;
+	transition:opacity 0.2s;
+}
+.suggested .cont .nextLinkBtn:after{
+	position:absolute;
+	content:"Next";
+	left:calc(100% + 10px);
+	top:calc(50% - (68%/2));
+	height:68%;
+	display:flex;
+	align-items:center;
+	padding:0px 8px 0px 12px;
+	border-radius:4px;
+	clip-path:polygon(16% 0, 100% 0, 100% 100%, 16% 100%, 0 51%);
+	background-color:#263238;
+	color:white;
+	font-size:11px;
+	width:35px;
+	justify-content:center;
+	opacity:0.9;
+	transition:opacity 0.2s;
+	animation:slide 1.5s 0.5s infinite ease-in-out;
+}
+.suggested .cont button:hover:after {
+	opacity:0;
+}
+.suggested .cont button:hover , .suggested .cont button:active {
+	transform:scale(1.05) translateX(10px);
+}
+.suggested .cont button a {
+	text-decoration:none;
+	color:white;
+	cursor:none;
+}
+.line hr {
+	opacity:0.2;
+	width:100%;
+	margin:2px auto;
+	border-radius:10px;
+	display:block;
+	height:2px;
+	border:none;
+	background-color:#37474F;
+}
+.matrixScalarText {
+	display:inline-block;
+	margin:auto;
+	font-size:16px;
+	font-weight:800;
+}
