@@ -71,7 +71,6 @@ function openMenu(t){
 		pause = false;
 	}
 }
-
 function closeMenu(){
 	s("#menu_btn").setAttribute("state","0");
 	pause = false;
@@ -128,11 +127,3 @@ function init(){
 	edgeCollision(particles);
 	}
 }
-
-
-
-/*
-q1 -------- q2
-
-
-*/
