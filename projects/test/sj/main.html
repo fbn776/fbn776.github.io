@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Space Junk</title>
+    <link rel="stylesheet" href="libs/lib.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="libs/lib.js"></script>
+    <script src="libs/vector.js"></script>
+    <script src="libs/canvas.js"></script>
+    
+    <script src="script/asteroid_sprites.js"></script>
+    <script src="script/crafts_sprites.js"></script>
+    
+    <script src="libs/stats.min.js"></script>
+		
+</head>
+<body>
+	<!--Canvas cont-->
+	<div class="canvas_cont"></div>
+		<!--Bacground canvas-->
+		<canvas id="background_canvas"></canvas>
+		<!--Canvas for drawing the junks-->
+		<canvas id="junks_canvas"></canvas>
+		
+		<!--Canvas for drawing the player-->
+		<canvas id="player_canvas"></canvas>
+	</div>
+	
+	<button id="startBtn">Start</button>
+	<button id="endBtn">End</button>
+	<div class="log"></div>
+	
+	
+	<script src="script/helper.js"></script>
+	<script src="script/setup.js"></script>
+	<script src="script/bg.js"></script>
+	<script src="script/classes.js"></script>
+	<script src="script/player.js"></script>
+	<script src="script/junks.js"></script>
+	<script src="script/main.js"></script>
+	<script>
+	</script>
+</body>
+</html>
