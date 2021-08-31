@@ -1,0 +1,49 @@
+body {
+	margin:0px;
+	height: 100vh;
+}
+
+.canvas_cont {
+	width:100%;
+	height:100%;
+}
+#background_canvas {
+	position: fixed;
+	top:0;
+	left:0;
+	background-color:black;
+	z-index:10;
+}
+#junks_canvas {
+	position: fixed;
+	top:0;
+	left:0;
+	z-index:11;
+}
+#player_canvas {
+	position: fixed;
+	top:0;
+	left:0;
+	z-index:12;
+}
+
+.log {
+	position: fixed;
+	top:0;
+	background: white;
+	z-index: 999;
+	right: 0px;
+}
+
+#startBtn , #endBtn{
+	position: fixed;
+	bottom:20px;
+	z-index: 9999;
+	padding: 10px;
+}
+#startBtn {
+	left:20px;
+}
+#endBtn {
+	right:20px;
+}
