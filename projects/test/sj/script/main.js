@@ -1,3 +1,5 @@
+alert("New")
+
 var stats = new Stats();
 stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
 document.body.appendChild(stats.dom);
@@ -66,11 +68,17 @@ function draw() {
 	for (let junk of junks.junks_arr){
 		let posY1 = player.pos.y - player.sizeY/2;
 		let posY2 = player.pos.y + player.sizeY/2;
-		
+	
+/*	
+		junks_canvas.ctx.line(0,posY1,sw,posY1,{color:"blue"})
+		junks_canvas.ctx.line(0,posY2,sw,posY2,{color:"blue"})
+		junks_canvas.ctx.line(0,junk.pos.y,sw,junk.pos.y,{color:"yellow"})
+*/
+
 		//If the 'junk' is near to the player, then do the collision check:
-		if (junk.pos.y >= posY1 && junk.pos.y <= posY2) {
+	//	if (junk.pos.y >= posY1 && junk.pos.y <= posY2) {
 			junks_canvas.ctx.box(junk.hitbox.x, junk.hitbox.y, junk.hitbox.w, junk.hitbox.h, {color: "green",fill: "transparent"});
-		
+			
 			for (let player_box of player.hitbox) {
 				player_canvas.ctx.box(player_box.x, player_box.y, player_box.w, player_box.h, {color: "red",fill: "transparent"});
 				
@@ -79,7 +87,7 @@ function draw() {
 					junks_canvas.ctx.box(junk.hitbox.x, junk.hitbox.y, junk.hitbox.w, junk.hitbox.h, {color: "red",fill: "transparent"});
 				}
 			}
-		};
+		//};
 	}
 	
 	stats.end()
