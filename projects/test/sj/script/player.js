@@ -120,6 +120,8 @@ class Player {
 			a.add(a.opt.ogPos.x, a.opt.ogPos.y);
 			a.update();
 		};
+		console.log(this.img)
+		document.body.appendChild(this.img)
 		this.ctx.drawImage(this.img, 0, 0, this.craft.dim.w, this.craft.dim.h, -this.sizeX / 2, -this.sizeY / 2, this.sizeX, this.sizeY);
 		this.ctx.restore();
 
