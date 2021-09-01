@@ -195,9 +195,12 @@ function tan(n){return Math.tan(n)};
 function cosec(n){return 1/sin(n)};
 function sec(n){return 1/cos(n)};
 function cot(n){return 1/tan(n)};
-function random(x,y){
-	return x+Math.random()*(y-x);
+
+function random(x,y,round=false){
+	let r = round?Math.floor(Math.random()):Math.random();
+	return x+r*(y-x);
 }
+
 //Objects and array functions
 Object.prototype.getKeys = function(){
 	return Object.getOwnPropertyNames(this);

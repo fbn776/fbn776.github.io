@@ -24,21 +24,63 @@ class Player {
 
 		this.player_dir = 0;
 		//Value controlling the X val of the velocity vector
-		this.dispX = 1;
+		this.dispX = opt.dispX || 2;
 		this.craft = opt.craft;
 		this.exhaustArr = [];
 		this.hitbox = [];
 
-		this.maxRotAngle = 4;
+		this.maxRotAngle = 1;
 		this.rot_val = 0;
 		this.lastDir = 0;
 		this.i = 0;
 		this.i_lim = 20;
+
+		//endgame stuffs:
+		this.hasCollision = false;
+		this.pauseCtrlVar = false;
+		this.explosionClass = opt.explosionClass;
+		this.shockWave = {};
+		this.incr = 0;
+		this.expTime = 150;
+		this.overrideRot = false;
+
+		this.gameEnd = false;
 	}
+	pauseCtrl() {
+		this.pauseCtrlVar = true;
+		this.rot_val = 0;
+		this.vel.x = 0;
+		this.exhaustArr = [];
+		this.overrideRot = true;
+	}
+	//Single call function
+	explodeStart() {
+		this.shockWave = new ShockWave(junks_canvas.ctx, {
+			x: this.pos.x,
+			y: this.pos.y,
+			num: 6,
+			interval: 3,
+			count: 180,
+		});
+		this.vel = new Vector(random(-1, 1), 1);
+	}
+	//Animiation loop
+	explode() {
+		if (this.incr <= this.expTime) {
+			let mapped = 1 - map_range(this.incr, 0, this.expTime, 0, 1);
+			this.shockWave.show();
+			for (let i = 0; i < random(0, 20 * mapped); i++) {
+				let dx = Math.floor(random(-this.sizeX / 4, this.sizeX / 4));
+				let dy = Math.floor(random(-this.sizeY / 4, this.sizeY / 4));
+				this.explosionClass.add(this.pos.x + dx, this.pos.y + dy);
+			}
+			this.incr++;
+		}
+		this.explosionClass.update();
+	}
+
 	initDesign() {
 		this.img = this.craft.img;
-
-
 		this.i_lim = this.craft.rot_time || 20;
 		this.maxRotAngle = this.craft.max_rot || 4;
 		//Code for creating particles for exhaust
@@ -72,11 +114,13 @@ class Player {
 	}
 
 	setDir(player_dir) {
-		this.lastDir = this.player_dir;
-		this.player_dir = player_dir;
-		this.vel.x = player_dir * this.dispX;
-		this.i = 0;
-		this.rot_val = this.player_dir * this.maxRotAngle;
+		if (!this.pauseCtrlVar) {
+			this.lastDir = this.player_dir;
+			this.player_dir = player_dir;
+			this.vel.x = player_dir * this.dispX;
+			this.i = 0;
+			this.rot_val = this.player_dir * this.maxRotAngle;
+		}
 	}
 
 	update() {
@@ -99,13 +143,22 @@ class Player {
 				w: a.w,
 				h: a.h,
 			}
+			
+			//junks_canvas.ctx.box(hitbox.x,hitbox.y,hitbox.w,hitbox.h,{fill:"transparent",color:"blue"})
+
 			this.hitbox[currIndex] = hitbox;
-			currIndex ++;
+			currIndex++;
+		};
+
+		if (this.pauseCtrlVar) {
+			if (this.pos.y - (this.sizeY / 2) > sh) {
+				this.gameEnd = true;
+			}
 		}
 	}
 	show() {
 		//Code to revert the rotation of thr craft
-		if (this.rot_val) {
+		if (this.rot_val && !this.overrideRot) {
 			this.i++;
 			if (this.i >= this.i_lim) {
 				this.rot_val = 0;
@@ -123,6 +176,8 @@ class Player {
 		};
 		this.ctx.drawImage(this.img, 0, 0, this.craft.dim.w, this.craft.dim.h, -this.sizeX / 2, -this.sizeY / 2, this.sizeX, this.sizeY);
 		this.ctx.restore();
-
+	}
+	rotateCraft(v) {
+		this.rot_val += v;
 	}
 }

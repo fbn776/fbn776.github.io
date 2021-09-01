@@ -10,7 +10,7 @@ const junks_canvas = setUpCanvas("junks_canvas",sw,sh);
 
 const player_canvas = setUpCanvas("player_canvas",sw,sh);
 
-
+const enemy_canvas = setUpCanvas("enemy_canvas",sw,sh);
 
 
 
