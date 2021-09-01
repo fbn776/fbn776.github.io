@@ -14,7 +14,8 @@
     
     <script src="script/asteroid_sprites.js"></script>
     <script src="script/crafts_sprites.js"></script>
-    
+    <script src="script/enemy_sprites.js"></script>
+   
     <script src="libs/stats.min.js"></script>
 		
 </head>
@@ -25,17 +26,17 @@
 		<canvas id="background_canvas"></canvas>
 		<!--Canvas for drawing the junks-->
 		<canvas id="junks_canvas"></canvas>
-		
+		<!--Canvas for enemy players-->
+		<canvas id="enemy_canvas"></canvas>
 		<!--Canvas for drawing the player-->
 		<canvas id="player_canvas"></canvas>
 	</div>
 	
 	
-	<!--
-	<button id="startBtn">Start</button>
-	<button id="endBtn">End</button>
-	test1
-	-->
+	
+	<button id="toLeft">Left</button>
+	<button id="stopBtn">Stop</button>
+	<button id="toRight">Right</button>
 	
 	<div class="log"></div>
 	
@@ -46,6 +47,7 @@
 	<script src="script/classes.js"></script>
 	<script src="script/player.js"></script>
 	<script src="script/junks.js"></script>
+	<script src="script/enemy.js"></script>
 	<script src="script/main.js"></script>
 	<script>
 	</script>
