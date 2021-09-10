@@ -8,9 +8,11 @@ const bg_canvas = setUpCanvas("background_canvas",sw,sh);
 
 const junks_canvas = setUpCanvas("junks_canvas",sw,sh);
 
-const player_canvas = setUpCanvas("player_canvas",sw,sh);
+let player_canvas = junks_canvas;
+let enemy_canvas = junks_canvas;
+//const player_canvas = setUpCanvas("player_canvas",sw,sh);
 
-const enemy_canvas = setUpCanvas("enemy_canvas",sw,sh);
+//const enemy_canvas = setUpCanvas("enemy_canvas",sw,sh);
 
 
 

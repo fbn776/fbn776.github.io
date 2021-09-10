@@ -98,6 +98,11 @@ class Player {
 				ogPos: { x: a.x, y: a.y },
 			})
 			this.exhaustArr.push(p);
+			
+			//Set the Y pos of player:
+			this.posY1 = this.pos.y - this.sizeY / 2;
+			this.posY2 = this.pos.y + this.sizeY / 2;
+
 		};
 
 		for (let curr of this.craft.hitbox) {

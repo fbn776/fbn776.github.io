@@ -78,7 +78,7 @@ class Junks {
 
 		this.junks_arr = [];
 
-		this.time_range = opt.timeRange || [500,4000];
+		this.time_range = opt.timeRange || [500, 4000];
 		this.time_interval = 0;
 
 		this.curr_time = Date.now();
@@ -94,10 +94,10 @@ class Junks {
 		//Future stuff:
 		this.spaceAvil = false;
 	}
-	add(x,y) {
+	add(x, y) {
 		if (!this.gameOver) {
 			this.curr_time = Date.now();
-			let passDirect = (x&&y);
+			let passDirect = (x && y);
 			if (passDirect || ((Math.random() < this.chance) && ((this.curr_time - this.last_time) > this.time_interval))) {
 				this.spaceAvil = false;
 				let size = Math.floor(random(this.size[0], this.size[1]));
@@ -124,6 +124,21 @@ class Junks {
 		}
 	}
 
+
+	showIndividual(index) {
+		let curr = this.junks_arr[index];
+		curr.update();
+		curr.show();
+		this.ctx.box(0,curr.pos.y-(curr.size),sw,2,{
+			fill:"red"
+		})
+		if (curr.pos.y - (curr.size) > sh) {
+			this.junks_arr.splice(index, 1);
+			return true;
+		}
+	}
+	
+	/*
 	show() {
 		for (let i = 0; i < this.junks_arr.length; i++) {
 			let curr = this.junks_arr[i];
@@ -137,4 +152,5 @@ class Junks {
 			}
 		}
 	}
+	*/
 }
