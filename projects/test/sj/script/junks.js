@@ -87,7 +87,7 @@ class Junks {
 		this.chance = opt.chance || 0.1;
 		this.size = opt.size || [20, 45];
 
-		this.vel = opt.vel || 1;
+		this.vel = opt.vel || 1.5;
 
 		this.gameOver = false;
 		this.hitJunk = {};
@@ -129,9 +129,6 @@ class Junks {
 		let curr = this.junks_arr[index];
 		curr.update();
 		curr.show();
-		this.ctx.box(0,curr.pos.y-(curr.size),sw,2,{
-			fill:"red"
-		})
 		if (curr.pos.y - (curr.size) > sh) {
 			this.junks_arr.splice(index, 1);
 			return true;

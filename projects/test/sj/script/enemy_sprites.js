@@ -9,6 +9,13 @@ const enemy_sprites = [
 		hitbox: [
 			{x:12,y:0,w:35,h:60},
 			{x:0,y:12,w:60,h:35}
-		]
+		],
+		hasGun:true,
+		guns: [
+			{x:10,y:48},
+			{x:49,y:48},
+		],
+		
+		bulletDamge:20,
 	},
 ];

@@ -211,7 +211,7 @@ class ShockWave {
 		this.y = opt.y;
 		this.pCount = opt.count || 360;
 		this.arr = [];
-		this.colors = opt.color || [
+		this.colors = opt.colors || [
 			[73, 68, 68, 1],
 			[114, 111, 111, 1],
 			[139, 137, 137, 1],
@@ -229,7 +229,7 @@ class ShockWave {
 
 	add() {
 		let color = this.colors.randomItem();
-		for (let i = 0; i < this.pCount; i += (360 / this.pCount)) {
+		for (let i = 0; i < 360; i += (360 / this.pCount)) {
 			let dr = random(-1, 1);
 			let x = Math.cos(i + dr);
 			let y = Math.sin(i + dr);
@@ -240,7 +240,7 @@ class ShockWave {
 				color: color,
 				maxAge: random(10, 100),
 			});
-			this.arr.push(p)
+			this.arr.push(p);
 		};
 	}
 
@@ -266,4 +266,40 @@ class ShockWave {
 		}
 	}
 
+}
+
+
+
+//Bullet class:
+class Bullet {
+	constructor(ctx,opt){
+		this.ctx = ctx;
+		this.startX = opt.startX;
+		this.startY = opt.startY;
+		this.dir = opt.dir;
+		this.velMag = opt.vel || 5;
+		this.radius = opt.radius || 2;
+		this.pos = new Vector(this.startX,this.startY);
+		this.vel = new Vector(this.dir.x*this.velMag,this.dir.y*this.velMag);
+		this.lastPos = this.pos;
+		this.count = 0;
+		//Style:
+		this.color = opt.color || "#03A9F4";
+		this.trailLen = opt.trailLen || 15;
+	}
+	showAndUpdate(){
+		this.count ++;
+
+		this.pos = this.pos.add(this.vel);
+
+		let angle = this.vel.heading() + rad(90);
+		this.ctx.save();
+			this.ctx.translate(this.pos.x,this.pos.y);
+			this.ctx.rotate(angle);
+			this.ctx.line(0,0,0,this.trailLen,{
+				color:this.color,
+				lineWidth:this.radius*2
+			});
+		this.ctx.restore();
+	}
 }

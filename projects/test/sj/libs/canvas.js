@@ -117,6 +117,11 @@ CanvasRenderingContext2D.prototype.Arrow = function(){
 	ctx.restore();
 	
 };
+CanvasRenderingContext2D.prototype.drawRect = function(obj,opt){
+	let ctx = this;
+	ctx.box(obj.x,obj.y,obj.w,obj.h,opt);
+}
+
 function circleCord(){
 	let args = arguments;
 	let	h = args[0],
