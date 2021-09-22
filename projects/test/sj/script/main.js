@@ -1,12 +1,13 @@
+
+/*
 var stats = new Stats();
 stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
 document.body.appendChild(stats.dom);
 
-//console.log(stats.dom)
 stats.dom.style.left = "";
 stats.dom.style.right = "0px";
 stats.dom.style.top = "120px"
-
+*/
 
 //Game over var
 var gameOver = false;
@@ -68,7 +69,6 @@ fire.onclick = function() {
 	player.fireBullet();
 }
 
-
 /*junks_canvas.canvas.onclick = function(e) {
 	enemies.add(true, e.clientX, e.clientY)
 }
@@ -87,7 +87,7 @@ function draw() {
 	if (elapsed > fpsInterval) {
 		then = now - (elapsed % fpsInterval);
 
-		stats.begin();
+		//stats.begin();
 
 		player_canvas.ctx.clearRect(player_area.x, player_area.y - 1, player_area.w, player_area.h + 1);
 		junks_canvas.ctx.clearRect(0, 0, sw, sh);
@@ -413,7 +413,7 @@ function draw() {
 
 		//Manage frame rate:
 		var sinceStart = now - startTime;
-		stats.end();
+		//stats.end();
 	}
 }
 
