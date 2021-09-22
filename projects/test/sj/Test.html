@@ -1,0 +1,132 @@
+ <script src="libs/stats.min.js"></script>
+ <canvas style="outline:1px solid red" id="canvas" width="300" height="300"></canvas>
+ <script>
+ 	var stats = new Stats();
+ 	stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+ 	document.body.appendChild(stats.dom);
+
+
+
+ 	var frameCount = 0;
+ 	var fps, fpsInterval, startTime, now, then, elapsed;
+ 	startAnimating(60);
+
+ 	function startAnimating(fps) {
+ 		fpsInterval = 1000 / fps;
+ 		then = Date.now();
+ 		startTime = then;
+ 		animate();
+ 	}
+
+
+ 	var ctx = canvas.getContext("2d");
+ 	var sw = canvas.width;
+ 	var sh = canvas.height;
+
+
+ 	let i = 0;
+ 	let a = 1;
+
+ 	function animate() {
+ 		requestAnimationFrame(animate);
+
+ 		stats.begin();
+ 		now = Date.now();
+ 		elapsed = now - then;
+ 		if (elapsed > fpsInterval) {
+ 			then = now - (elapsed % fpsInterval);
+ 			// draw animating objects here... 
+ 			ctx.clearRect(0, 0, sw, sh)
+ 			i += a;
+ 			if (i >= sw) {
+ 				a = -1;
+ 			}
+ 			if (i <= 0) {
+ 				a = 1;
+ 			}
+ 			ctx.fillRect(i, sh / 2, 5, 5);
+
+
+ 			var sinceStart = now - startTime;
+ 			//var currentFps = Math.round((1000 / (sinceStart / ++frameCount)) * 100) / 100;
+
+ 			stats.end()
+ 		}
+ 	}
+ </script>
+ <script>
+ 	// Javascript implementation to check if any 
+ 	// point overlaps the given circle 
+ 	// and rectangle
+
+ 	// Function to check if any polet 
+ 	// overlaps the given circle 
+ 	// and rectangle
+	var circle = {
+		x:,
+		y:,
+		r:,
+	}
+	
+	var rect = {
+		x:,
+		y:,
+		w:,
+		h:,
+	}
+	
+ 	function checkOverlap(circle,rect){
+ 		let R = circle.r,
+ 			Xc = circle.x,
+ 			Yc = circle.y,
+ 			X1 = rect.x,
+ 			Y1 = rect.y,
+ 			X2 = rect.x + rect.w,
+ 			Y2 = rect.y + rect.h;
+ 			
+ 		let Xn = Math.max(X1, Math.min(Xc, X2));
+ 		let Yn = Math.max(Y1, Math.min(Yc, Y2));
+ 		let Dx = Xn - Xc;
+ 		let Dy = Yn - Yc;
+ 		return (Dx * Dx + Dy * Dy) <= R * R;
+ 	}
+
+
+
+ 	// Driver Code
+
+
+
+ 	let R = 1;
+
+ 	let Xc = 0,
+ 		Yc = 0;
+
+ 	let X1 = 1,
+ 		Y1 = -1;
+
+ 	let X2 = 3,
+ 		Y2 = 1;
+
+
+
+ 	if (checkOverlap(R, Xc, Yc,
+
+ 			X1, Y1,
+
+ 			X2, Y2))
+
+ 	{
+
+ 		document.write("True" + "\n");
+
+ 	}
+
+ 	else
+
+ 	{
+
+ 		document.write("False");
+
+ 	}
+ </script>
