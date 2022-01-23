@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta name="viewport" content="width= device-width, initial-scale=1.0">
 	<style>
@@ -24,15 +25,17 @@
 			z-index: 10;
 			background-color: transparent;
 		}
+
 		#secondary {
 			z-index: 9;
 			opacity: 0;
 			transform: scale(0);
-			transition:opacity 0.2s, transform 0.2s;
+			transition: opacity 0.2s, transform 0.2s;
 		}
+
 		#reset {
 			position: fixed;
-			z-index: 11;
+			z-index: 999;
 			width: 100px;
 			height: 40px;
 			font-weight: 800;
@@ -45,7 +48,7 @@
 
 		#showall {
 			position: fixed;
-			z-index: 11;
+			z-index: 999;
 			width: 50px;
 			height: 25px;
 			font-weight: 800;
@@ -61,16 +64,56 @@
 		#showall[display="0"] {
 			color: #E53935;
 		}
+
 		#showall[display="1"] {
 			color: #1E88E5;
 		}
+
+		.cont {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 15;
+			display: none;
+		}
+		.cont div {
+			position: absolute;
+			left: 0;
+			width: 100%;
+		}
+		.cont div canvas {
+			position: relative;
+			transition: opacity 0.1s;
+		}
+		.cont div button {
+			position: absolute;
+			right: 10px;
+			height: 20px;
+			top: calc(50% - 10px);
+			z-index: 100;
+			border:2px solid rgba(40,40,40,0.7);/*#313131;*/
+			border-radius: 3px;
+			font-weight:800;
+			font-size:9px;
+			opacity: 0.8;
+		}
+		.cont div button[state="0"] {
+			opacity: 0.4;
+			color:#FF4949;
+		}
+		.cont div button[state="1"] {
+			color:#3879FE;
+		}
+
 	</style>
 
 </head>
 
 <body>
 	<canvas id="main"></canvas>
-	<canvas id="secondary"></canvas>
+	<div class="cont"></div>
 
 	<button id="reset">Reset</button>
 	<button id="showall" display="0">Waves</button>
@@ -80,9 +123,33 @@
 		function s(x) {
 			return document.querySelector(x)
 		};
+
 		function random(x, y) {
 			return x + Math.random() * (y - x);
 		};
+
+		function createCanvas(elm, w, h, id, cls) {
+			var canvas = document.createElement("canvas");
+			var ctx = canvas.getContext("2d");
+			if (id) {
+				canvas.setAttribute("id", id);
+				if (cls) {
+					canvas.setAttribute("class", cls);
+				}
+			}
+			canvas.width = w;
+			canvas.height = h;
+			elm.appendChild(canvas)
+			return {
+				canvas: canvas,
+				ctx: ctx,
+				w: w,
+				h: h,
+				cx: w / 2,
+				cy: h / 2
+			}
+		};
+
 		CanvasRenderingContext2D.prototype.line = function(x1, y1, x2, y2, color, width = 2.5) {
 			this.beginPath();
 			this.strokeStyle = color;
@@ -114,33 +181,25 @@
 		};
 	</script>
 	<script>
+		const cont = s(".cont")
+
 		let showAll = false;
 		s("#showall").onclick = function() {
-			//ctx2.clearRect(0, 0, canvas.width, canvas.height);
 			if (this.getAttribute("display") == "0") {
 				this.setAttribute("display", "1");
+				cont.style.display = "block"
 				showAll = true;
-				canvas2.style.opacity = 1;
-				canvas2.style.transform = "scale(1)";
 			} else if (this.getAttribute("display") == "1") {
-				this.setAttribute("display", "0")
+				this.setAttribute("display", "0");
+				cont.style.display = "none";
 				showAll = false;
-				canvas2.style.opacity = 0;
-				canvas2.style.transform = "scale(0)";
 			}
 		}
 
 		let canvas = s("#main");
-		let canvas2 = s("#secondary");
-		
 		let ctx = canvas.getContext("2d");
-		let ctx2 = canvas2.getContext("2d");
-		
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
-		
-		canvas2.width = window.innerWidth;
-		canvas2.height = window.innerHeight;
 
 		let cw = canvas.width,
 			ch = canvas.height,
@@ -169,7 +228,7 @@
 
 		let pointX = Math.floor(cx);
 		document.body.ontouchmove = function(e) {
-			if(showAll){
+			if (showAll) {
 				pointX = Math.floor(e.touches[0].clientX);
 			}
 		}
@@ -186,6 +245,7 @@
 
 
 		function generateWaves() {
+			cont.innerHTML = "";
 			waves = [];
 			wavePos = []
 			prevPos = 0;
@@ -196,11 +256,40 @@
 					phase = random(-twoPi, twoPi);
 				let w = new Wave(amplitude, time_period, phase);
 				w.color = `hsl(${map_range(i,0,waveCount-1,0,360)},30%,80%)`;
-				waves.push(w);
+				waves.push({ wave: w, display: true });
 				let y1 = prevPos + filler;
 				let y2 = y1 + barH;
 				wavePos.push(Math.floor(y1 + maxAmp / 2));
 				prevPos = y2;
+
+				let div = document.createElement("div");
+				cont.appendChild(div);
+				let canva = document.createElement("canvas");
+				div.appendChild(canva);
+
+				let btn = document.createElement("button");
+				btn.setAttribute("state","0");
+				btn.innerHTML = "Hide";
+				btn.onclick = function() {
+					if (btn.innerHTML == "Hide") {
+						waves[i].display = false;
+						btn.innerHTML = "Show";
+						canva.style.opacity = 0;
+						btn.setAttribute("state","1");
+					} else {
+						btn.innerHTML = "Hide";
+						waves[i].display = true;
+						canva.style.opacity = 1;
+						btn.setAttribute("state","0");
+					}
+				}
+
+				div.appendChild(btn)
+				canva.width = cw;
+				canva.height = barH;
+				w.canvas = canva;
+				w.ctx = canva.getContext("2d")
+				div.style.top = y1 + "px"
 			}
 		};
 
@@ -209,31 +298,33 @@
 		let now;
 		let lastTime = 0;
 		let lastY = 0;
+
 		function innit() {
 			now = Date.now();
 			let dt = (now - lastTime) / 1000.0;
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
-			if(showAll){
-				ctx2.clearRect(0, 0, canvas.width, canvas.height);
-			}
+
 			//Move the waves;
 			for (let wave of waves) {
-				wave.updatePhase(2.5, dt);
+				wave.wave.ctx.clearRect(0, 0, wave.wave.canvas.width, wave.wave.canvas.height)
+				wave.wave.updatePhase(2.5, dt);
 			};
 			//Draw the waves;
 			let pointY;
 			for (let x = 0; x < canvas.width; x += 1) {
 				let finalY = 0;
 				for (let i = 0; i < waves.length; i++) {
-					let curr = waves[i]
-					let y = curr.f((x / canvas.width) * twoPi);
-					if (showAll) {
-						let lastY1 = wavePos[i] + (curr.lastY / 2),
-							currY1 = wavePos[i] + (y / 2);
-						ctx2.line(x - 1, lastY1, x, currY1, curr.color, 1);
+					if (waves[i].display) {
+						let curr = waves[i].wave;
+						let y = curr.f((x / canvas.width) * twoPi);
+						if (showAll) {
+							let lastY1 = (curr.canvas.height / 2) + (curr.lastY / 2),
+								currY1 = (curr.canvas.height / 2) + (y / 2);
+							curr.ctx.line(x - 1, lastY1, x, currY1, curr.color, 1);
+						}
+						finalY += y;
+						curr.lastY = y;
 					}
-					finalY += y;
-					curr.lastY = y;
 				};
 				if (x == pointX) {
 					pointY = finalY + cy;
@@ -244,19 +335,22 @@
 
 			if (showAll) {
 				for (let i = 0; i < waves.length; i++) {
-					let curr = waves[i];
-					let y = (curr.f((pointX / canvas.width) * twoPi) / 2) + wavePos[i];
+					if (waves[i].display) {
+						let curr = waves[i].wave;
+						let y = (curr.f((pointX / canvas.width) * twoPi) / 2) + wavePos[i] + 6;
 
-					let offval = (i >= 5) ? waves.length - 1 - i : i + 1;
-					let offset = pointX + (((i % 2 == 0) ? 1 : -1) * (offsetLen * offval));
-					
-					let w = 2;
-					ctx2.line(pointX, y, offset, y, curr.color, w);
-					ctx2.line(offset, y, pointX, pointY, curr.color, w)
-					ctx2.circle(pointX, y, 3, { fill: curr.color })
-					ctx2.circle(pointX, pointY, 5, { fill: "red" })
+						let offval = (i >= 5) ? waves.length - 1 - i : i + 1;
+						let offset = pointX + (((i % 2 == 0) ? 1 : -1) * (offsetLen * offval));
+
+						let w = 2;
+						ctx.line(pointX, y, offset, y, curr.color, w);
+						ctx.line(offset, y, pointX, pointY, curr.color, w)
+						ctx.circle(pointX, y, 3, { fill: curr.color })
+						ctx.circle(pointX, pointY, 5, { fill: "red" })
+					}
 				}
-			}
+			};
+
 			lastTime = now;
 			window.requestAnimationFrame(innit)
 		}
