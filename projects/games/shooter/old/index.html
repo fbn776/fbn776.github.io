@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta name="viewport" content="width= device-width, initial-scale=1.0"> 
+<style>
+*{
+  	box-sizing:border-box;
+  	font-family:monospace;
+}
+*:focus {
+  	outline:none;	
+}
+body {
+	margin:0px;
+	height:100vh;
+	background-color:black;
+}
+#game_lost {
+	position:fixed;
+	width:100%;
+	height:100px;
+	font-weight:800;
+	font-size:30px;
+	color:white;
+	font-family:monospace;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	top:calc(50% - 50px);
+	transform:translateX(-300px) scale(0);
+	opacity:0;
+	visibility:hidden;
+	transition:transform 0.2s 0s ease-in , opacity 0.2s 0s ease-in-out;
+}
+#restart_btn {
+	position:absolute;
+	bottom:-100px;
+	font-size:13px;
+	opacity:0;
+	transform:translateY(-200px);
+	transition:transform 0.2s 0s ease-in , opacity 0.2s 0s ease-in-out;
+	padding:15px;
+}
+#game_score {
+	position:absolute;
+	bottom:100px;
+	font-size:13px;
+}
+#game_score div {
+	font-size:13px;
+}
+#startGame {
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:100;
+	color:white;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	font-size:35px;
+	font-weight:700;
+	background-color:rgba(0,0,0,0.8);
+	letter-spacing:2px;
+}
+</style>
+	<script src="lib/lib.js"></script>
+	<script src="lib/vector.js"></script>	
+	<link rel="stylesheet" href="lib/lib.css">
+</head>
+<body>
+	<start id="startGame">Start</start>
+	<canvas></canvas>
+	<div id="game_lost">
+		<div id="game_score">
+			<div>Kills: <val key="total_kills"></val></div><br>
+			<div>Bullets Used: <val key="bullets_used"></val></div><br>
+			<div>High score: <val key="highscore"></val></div><br>
+		</div>
+		You lost
+		<p id="restart_btn">Click here to restart</p>
+	</div>
+<script src="lib/canvas.js"></script>
+<script src="lib/class.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

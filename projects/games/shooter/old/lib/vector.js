@@ -74,7 +74,7 @@ function Vector(x,y){
 		return new Vector(Math.cos(newHeading) * mag,Math.sin(newHeading) * mag);
 	};
 	this.lerp = function(x,y,amt){
-		if (x instanceof p5.Vector) {
+		if (x instanceof p5.Vectortor) {
 			return this.lerp(x.x, x.y, x.z, y);
 		}
 		var x = this.x + (x - this.x) * amt || 0;
@@ -92,7 +92,10 @@ function Vector(x,y){
 		return new Vector(v.x,v.y);
 	};
 }
-function vectorFromAngle(angle,length=1){
+function vectorFromAngle(angle,length){
+  	if(typeof length === 'undefined') {
+    	length = 1;
+ 	}
   	return new Vector(length*Math.cos(angle),length*Math.sin(angle));
 };
 function randomVector(len){
