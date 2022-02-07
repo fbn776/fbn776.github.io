@@ -67,6 +67,8 @@ document.body.onload = function() {
 	}
 
 	startBtn.onclick = function() {
+		fullscreen(document.body);
+		
 		startBtn.parentElement.style.opacity = 0;
 		setTimeout(function() {
 			startBtn.parentElement.style.visibility= "hidden";
