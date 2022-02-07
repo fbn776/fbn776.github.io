@@ -171,7 +171,8 @@ class Player {
 	show() {
 
 		this.ctx.drawImage(this.center_sprite, 0, 0, 128, 128, this.pos.x - (this.size / 2), this.pos.y - (this.size / 2), this.size, this.size)
-		this.ctx.line(this.last_touch.x, this.last_touch.y, this.pos.x, this.pos.y, { color: "blue" })
+		this.ctx.line(this.last_touch.x, this.last_touch.y, this.pos.x, this.pos.y, { color: "rgba(200,200,200,0.5)",dash:[5,2]})
+		this.ctx.circle(this.last_touch.x,this.last_touch.y,5,{fill:"rgba(200,200,200,0.5)"})
 
 		this.ctx.save()
 		this.ctx.translate(this.pos.x, this.pos.y)
