@@ -82,7 +82,7 @@ document.body.onload = function() {
 			player.update(dt);
 
 
-			ctx.showText(100,100,audio.length,{color:"red"});
+			//ctx.showText(100,100,audio.length,{color:"red"});
 
 
 			if (Math.random() < 0.05 && (now - lastEnemySpawnTime) > 300) {
