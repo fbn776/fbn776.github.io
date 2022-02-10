@@ -120,7 +120,7 @@ class Player {
 		this.gun_sprite = new Image();
 		this.gun_sprite.src = "sprites/gun.png";
 		this.gun_angle = 0;
-		this.last_touch = { x: 0, y: 0 };
+		this.last_touch = { x: cx, y: cy };
 
 		this.bullets = [];
 		this.enemies = {};
@@ -138,6 +138,7 @@ class Player {
 			this.last_touch = { x: x, y: y }
 			this.gun_angle = rad(slope(this.pos.x, this.pos.y, x, y) + 90);
 			if (Date.now() - this.bulletLastFiredTime > this.coolOffTime) {
+				audio.push(new Audio("audio/fire.mp3"))
 				let gun_end = circleCord(this.pos.x, this.pos.y, 15, this.gun_angle - Math.PI / 2);
 				let bullet = new Bullet(this.ctx, gun_end.x, gun_end.y, this.gun_angle - (Math.PI / 2));
 				this.bullets.push(bullet);
@@ -246,6 +247,10 @@ class Enemies {
 					if (!this.player.gameEnd) {
 						this.player.endTime = Date.now();
 					}
+					
+					//add sound;
+					audio.push(new Audio("audio/hit.mp3"));
+					
 					let smokes = new Smokes(curr_enemy.pos.x, curr_enemy.pos.y);
 					smokes.addN(random(5, 10));
 					this.player.explosion.push(smokes);
@@ -253,7 +258,6 @@ class Enemies {
 					this.arr.splice(i, 1);
 					i--;
 					continue;
-					
 				} else {
 					for (let j = 0; j < this.player.bullets.length; j++) {
 						let curr_bullet = this.player.bullets[j];
@@ -262,6 +266,7 @@ class Enemies {
 							curr_enemy.pos.x - curr_enemy.size / 2, curr_enemy.pos.y - curr_enemy.size / 2, curr_enemy.size, curr_enemy.size
 						);
 						if (bullet_collision) {
+							audio.push(new Audio("audio/hit.mp3"))
 							this.player.score += 1;
 							let vel = curr_bullet.vel.mult(0.05);
 							let particles = new Smokes(curr_enemy.pos.x, curr_enemy.pos.y)

@@ -9,11 +9,27 @@ let startBtn = s("#startGameBtn");
 let top_text = s("#top_text");
 let highscore = s("#highscore");
 
+
+
+const audio = [];
+
+/*document.body.onclick = function() {
+	for (let a of c) {
+		setTimeout(() => {
+			//print(a)
+			a.play();
+		}, 100);
+	}
+}*/
+
+
 document.body.onload = function() {
 	let highscore_value = localStorage.getItem("highscore");
-	highscore.innerHTML = highscore_value?highscore_value:"0";
-	
-	
+	highscore.innerHTML = highscore_value ? highscore_value : "0";
+
+
+
+
 	function startGame() {
 		const player = new Player(ctx, cx, cy);
 		document.body.onclick = function(e) {
@@ -32,13 +48,24 @@ document.body.onload = function() {
 		function draw() {
 			now = Date.now();
 			let dt = (now - lastTime) / 1000.0;
-
+			
+			
+			for(let l=0;l<audio.length;l++){
+				let curr = audio[l]
+				if(curr.ended){
+					audio.splice(l,1);
+					l --;
+					continue;
+				};
+				audio[l].play();
+			};
+			
 			if (player.gameEnd && (now - player.endTime > 4000)) {
 				startBtn.parentElement.style.visibility = "visible";
 				startBtn.parentElement.style.opacity = 1;
 				startBtn.innerHTML = "Restart"
 				top_text.innerHTML = "Game Over";
-				localStorage.setItem("highscore",player.score);
+				localStorage.setItem("highscore", player.score);
 				highscore.innerHTML = player.score
 				return false;
 			}
@@ -68,10 +95,10 @@ document.body.onload = function() {
 
 	startBtn.onclick = function() {
 		fullscreen(document.body);
-		
+
 		startBtn.parentElement.style.opacity = 0;
 		setTimeout(function() {
-			startBtn.parentElement.style.visibility= "hidden";
+			startBtn.parentElement.style.visibility = "hidden";
 			startGame();
 		}, 300)
 	}
