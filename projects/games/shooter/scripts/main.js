@@ -48,16 +48,23 @@ document.body.onload = function() {
 		function draw() {
 			now = Date.now();
 			let dt = (now - lastTime) / 1000.0;
-			
-			
-			for(let l=0;l<audio.length;l++){
+
+
+			for (let l = 0; l < audio.length; l++) {
 				let curr = audio[l]
-				if(curr.ended){
-					audio.splice(l,1);
-					l --;
+				if (curr.ended) {
+					audio.splice(l, 1);
+					l--;
 					continue;
 				};
-				audio[l].play();
+				
+				try {
+					audio[l].play();
+				}catch {
+					audio.splice(l, 1);
+					l--;
+					continue;
+				}
 			};
 			
 			if (player.gameEnd && (now - player.endTime > 4000)) {
@@ -73,6 +80,10 @@ document.body.onload = function() {
 			ctx.clearRect(0, 0, cw, ch)
 			player.show()
 			player.update(dt);
+
+
+			ctx.showText(100,100,audio.length,{color:"red"});
+
 
 			if (Math.random() < 0.05 && (now - lastEnemySpawnTime) > 300) {
 				enemies.add();
