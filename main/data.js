@@ -27,6 +27,10 @@ var data = [
 		name:"Matrix Calculator",
 		des:"A web app for doing calculations on matrices",
 		src:"projects/apps/matrixCalculator/index.html",
+	},{
+		name:"Camera to Ascii",
+		des: "A live camera to ascii text converter",
+		src:"projects/apps/ascii/index.html"
 	}
 ];
 
