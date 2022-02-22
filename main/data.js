@@ -12,10 +12,6 @@ var data = [
 		des:"A simple demonstration of added sine waves.",
 		src:"projects/other/sinWaves/index.html",
 	},{
-		name:"ray cast demo",
-		des:"A 2D demo of ray casting. With a pre built world, with debug options. Enjoy!",
-		src:"projects/other/rayCast/index.html",
-	},{
 		name:"Simple particle sim",
 		des:"This is a simple charged particles sim written in js. And works using the Coulomb's inverse square law!",
 		src:"projects/other/particles_sim/index.html",
