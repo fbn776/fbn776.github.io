@@ -1,3 +1,4 @@
+
 function generateGrid(rows, cols) {
 	let arr = [];
 	for (let i = 0; i < cols; i++) {

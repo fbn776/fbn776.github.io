@@ -2,6 +2,7 @@ let stopped = false;
 const { canvas, ctx, cx, cy, cw, ch } = setUpCanvas(s("#main"), width, height - 60);
 const canvas_rect = canvas.getBoundingClientRect();
 
+try {
 
 const gSize = 7;
 var rows = Math.floor(cw / gSize),
@@ -73,3 +74,6 @@ function draw() {
 };
 
 draw();
+} catch(e){
+	alert(e)
+}
