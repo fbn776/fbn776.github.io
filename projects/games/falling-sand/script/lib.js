@@ -1,3 +1,11 @@
+function fullscreen(el) {
+	if (el.webkitRequestFullScreen) {
+		el.webkitRequestFullScreen();
+	}
+	else {
+		el.mozRequestFullScreen();
+	}
+}
 
 function generateGrid(rows, cols) {
 	let arr = [];
@@ -10,18 +18,19 @@ function generateGrid(rows, cols) {
 	}
 	return arr;
 }
-const width = window.innerWidth;
-const height = window.innerHeight;
-function setUpCanvas(c,w,h){
+let width = window.innerWidth;
+let height = window.innerHeight;
+
+function setUpCanvas(c, w, h) {
 	c.width = w;
 	c.height = h;
 	return {
-		canvas:c,
-		ctx:c.getContext("2d"),
-		cw:c.width,
-		ch:c.height,
-		cx:c.width/2,
-		cy:c.height/2
+		canvas: c,
+		ctx: c.getContext("2d"),
+		cw: c.width,
+		ch: c.height,
+		cx: c.width / 2,
+		cy: c.height / 2
 	}
 }
 
@@ -34,7 +43,7 @@ Array.prototype.randomItem = function() {
 	return this[Math.floor(Math.random() * this.length)];
 };
 
-function s(elm){
+function s(elm) {
 	return document.querySelector(elm);
 }
 
@@ -59,7 +68,7 @@ function placeTile(e) {
 	if (x > 0 && x < rows * gSize && y > 0 && y < cols * gSize) {
 		let i = parseInt(x / gSize);
 		let j = parseInt(y / gSize);
-	
+
 		for (let k = 0; k < source_block.length; k++) {
 			const curr = source_block[k].pos;
 			if (j == curr[0] && i == curr[1]) {
@@ -180,9 +189,9 @@ function isNeighborCell(p, type) {
 	return data ? data[0] : false;
 }
 
-function strOfType(str,types){
-	for(let a of types){
-		if(a == str) {
+function strOfType(str, types) {
+	for (let a of types) {
+		if (a == str) {
 			return true;
 		}
 	}
