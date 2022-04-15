@@ -27,6 +27,10 @@ var data = [
 		name:"Camera to Ascii",
 		des: "A live camera to ascii text converter",
 		src:"projects/apps/ascii/index.html"
+	}, {
+		name: "Falling Sand Game",
+		des: "A falling sand game using cellular automata.",
+		src: "projects/games/falling-sand"
 	}
 ];
 

@@ -84,11 +84,8 @@
 				href: link,
 			});
 			a.innerHTML = `<name>${name}</name><des>${des}</des>`;
-
 			bottom.appendChild(a);
 		}
-
-
 		for (let a of data) {
 			createPanel(a.name, a.des, a.src);
 		}

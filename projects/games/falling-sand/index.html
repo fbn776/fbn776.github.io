@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width= device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="lib/style.css">
+	<style>
+		* {
+			box-sizing: border-box;
+			font-family: monospace;
+		}
+
+		*:focus {
+			outline: none;
+		}
+
+		body {
+			margin: 0px;
+			height: 100vh;
+		}
+		#main {
+			position: fixed;
+			top:0;
+			left:0;
+		}
+		.bottom-bar {
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			height: 60px;
+			display: flex;
+			align-items: center;
+			padding: 10px;
+			background: rgba(200,200,200,0.5);
+			overflow: scroll;
+		}
+		.bottom-bar button {
+			margin: 10px;
+			white-space: nowrap;
+		}
+		.active {
+			border-color: red;
+		}
+	</style>
+	<title>Falling Sand</title>
+</head>
+
+<body>
+	<canvas id="main"></canvas>
+	<div class="bottom-bar">
+		<p>Source: </p><input type="checkbox" id="setAsSource" > |</p>
+		<button onclick="changeTile('air',this,false)">Air</button>
+		<button onclick="changeTile('sand',this)" class="active">Sand</button>
+		<button onclick="changeTile('water',this)">Water</button>
+		<button onclick="changeTile('lava',this)">Lava</button>
+		<button onclick="changeTile('acid',this)">Acid</button>
+		<button onclick="changeTile('wall',this,false)">Wall</button>
+		<button onclick="changeTile('wood',this,false)">Wood</button>
+		<button onclick="changeTile('concrete',this)">Concrete</button>
+		<button onclick="changeTile('methane',this)">Methane</button>
+		<button onclick="changeTile('fire',this)">Fire</button>
+		<button onclick="changeTile('gunPowder',this,false)">Gun powder</button>
+		<button onclick="changeTile('smoke',this)">Smoke</button>
+		<button onclick="changeTile('vapour',this)">Vapour</button>
+		<button onclick="changeTile('charcoal',this)">Charcoal</button>
+		<button onclick="changeTile('obsidian',this,false)">Obsidian</button>
+		<button onclick="changeTile('glass',this,false)">Glass</button>
+		<button onclick="changeTile('fixedConcrete',this,false)">Fixed Concrete</button>
+	</div>
+	<script  src="script/lib.js"></script>
+	<script src="script/behavior.js"></script>
+	<script src="script/classes.js"></script>
+	<script src="script/setup.js"></script>
+	<script src="script/utlis.js"></script>
+	<script src="script/main.js"></script>
+	<script></script>
+</body>
+
+</html>
