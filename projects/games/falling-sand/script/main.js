@@ -14,12 +14,8 @@ rows = Math.abs(rows * gSize - cw) > 1 ? rows + 1 : rows;
 var grid_arr = generateGrid(rows, cols);
 
 
-function clearGrid(){
-	grid_arr = generateGrid(rows, cols);
-}
-
 /*{pos:[j,i],block:<block type>}*/
-const source_block = [];
+var source_block = [];
 const MAX_SOURCE_BLOCKS = 10;
 
 let currTile = "sand";
@@ -82,4 +78,9 @@ s(".start-menu").onclick = function(){
 	this.remove();
 	fullscreen(document.body);
 	draw();
+}
+
+function clearGrid(){
+	grid_arr = generateGrid(rows, cols);
+	source_block = [];
 }
