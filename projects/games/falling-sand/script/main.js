@@ -12,6 +12,12 @@ rows = Math.abs(rows * gSize - cw) > 1 ? rows + 1 : rows;
 
 
 var grid_arr = generateGrid(rows, cols);
+
+
+function clearGrid(){
+	grid_arr = generateGrid(rows, cols);
+}
+
 /*{pos:[j,i],block:<block type>}*/
 const source_block = [];
 const MAX_SOURCE_BLOCKS = 10;

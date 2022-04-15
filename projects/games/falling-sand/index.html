@@ -28,6 +28,7 @@
 			top: 0;
 			left: 0;
 			background: white;
+			z-index: 999;
 		}
 		.bottom-bar {
 			position: fixed;
@@ -78,6 +79,7 @@
 	<canvas id="main"></canvas>
 	<div class="bottom-bar">
 		<button onclick="fullscreen(document.body)">Fullscreen</button>
+		<button onclick="clearGrid()">Clear</button>
 		<p>|Source: </p><input type="checkbox" id="setAsSource"> |</p>
 		<button onclick="changeTile('air',this,false)">Air</button>
 		<button onclick="changeTile('sand',this)" class="active">Sand</button>
