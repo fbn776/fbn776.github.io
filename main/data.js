@@ -31,6 +31,10 @@ var data = [
 		name: "Falling Sand Game",
 		des: "A falling sand game using cellular automata.",
 		src: "projects/games/falling-sand"
+	}, {
+		name: "Flappy Box",
+		des: "Flappy Box; a simple clone of the iconic flappy bird",
+		src: "projects/games/flappy-box",
 	}
 ];
 
