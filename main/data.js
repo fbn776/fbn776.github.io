@@ -16,10 +16,6 @@ var data = [
 		des:"This is a simple charged particles sim written in js. And works using the Coulomb's inverse square law!",
 		src:"projects/other/particles_sim/index.html",
 	},{
-		name:"MatrixJS",
-		des:"Matrix.js is a simple js library, Using this you can use matrices in your JavaScript code",
-		src:"projects/libraries/matrix.js/index.html",
-	},{
 		name:"Matrix Calculator",
 		des:"A web app for doing calculations on matrices",
 		src:"projects/apps/matrixCalculator/index.html",
@@ -42,6 +38,19 @@ var data = [
 	}
 ];
 
+/*
+const Data = {
+	games: [
+		
+	],
+	tools: [
+		
+	],
+	misc: [
+		
+	]
+}
+*/
 
 //Sorts the data:
 data.sort(function(a,b){

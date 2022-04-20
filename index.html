@@ -21,7 +21,7 @@
 			--menu-color-light: #DCDCDC;
 			--main-text-color-light: #313131;
 			--bg-color-light: rgba(0, 0, 0, 0.5);
-
+			--panel-bg-light: red;
 
 			/*Dark theme*/
 			--bg-dark: #212121;
@@ -30,6 +30,8 @@
 			--menu-color-dark: #414141;
 			--main-text-color-dark: #C0C0C0;
 			--bg-color-dark: rgba(0, 0, 0, 0.7);
+			--panel-bg-light: blue;
+
 		}
 
 		:root {
@@ -67,6 +69,12 @@
 	</section>
 	<section id="bottom-section">
 		<p id="projects_title">Projects</p>
+		<!--
+		<div class="accordion">Games</div>
+		<div class="panel">
+			Hello
+		</div>
+		-->
 	</section><br>
 	<script>
 		var currTheme = localStorage.getItem("theme") || "light";
@@ -74,21 +82,28 @@
 		let themeChangerBtn = s("#theme-changer");
 		var bottom = s("#bottom-section");
 	</script>
-	<script src="libs/mainLib.js"></script>
 	<script src="main/script.js"></script>
 	<script src="main/data.js"></script>
 	<script>
-		function createPanel(name, des, link) {
-			let a = document.createElement("a");
-			a.setAttr({
-				class: "projects",
-				href: link,
-			});
-			a.innerHTML = `<name>${name}</name><des>${des}</des>`;
-			bottom.appendChild(a);
-		}
-		for (let a of data) {
-			createPanel(a.name, a.des, a.src);
+		window.onload = function() {
+			for (let a of data) {
+				createPanel(a.name, a.des, a.src);
+			}
+
+		/*	Accordions: {
+				let acc = document.getElementsByClassName("accordion");
+				for (let i = 0; i < acc.length; i++) {
+					acc[i].addEventListener("click", function() {
+						this.classList.toggle("acc_active");
+						var panel = this.nextElementSibling;
+						if (panel.style.maxHeight) {
+							panel.style.maxHeight = null;
+						} else {
+							panel.style.maxHeight = panel.scrollHeight + "px";
+						}
+					});
+				}
+			}*/
 		}
 	</script>
 </body>

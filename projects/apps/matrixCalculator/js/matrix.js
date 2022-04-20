@@ -36,8 +36,6 @@ function isInt(num){
 //Main code:
 const Matrix = {
 	//Main code
-	
-	//Matrix: create and manipulate
 	create:function(data,n,m){
 		if(isArray(data)){
 			if(typeof (n+m) === typeof 10){
@@ -143,6 +141,7 @@ const Matrix = {
 			return false;
 		}
 	},
+	//Namimg issue:
 	areMatrix:function(){
 		let args = arguments;
 		if(args.length > 0){
@@ -196,8 +195,7 @@ const Matrix = {
 			return false;
 		}
 	},
-	
-	//Matrix: Operations part:
+	//Addition - Subtraction:
 	add:function(A,B){
 		if(this.areMatrix(A,B) && this.hasSameOrder(A,B)){
 			let a = A.matrix,
@@ -220,6 +218,7 @@ const Matrix = {
 	sub:function(A,B){
 		return this.add(A,this.neg(B));
 	},
+	//Multiplication:
 	multByScalar:function(A,k,proceedDirect){
 		//Multiplies a matrix with a scalar
 		proceedDirect = false || proceedDirect;
@@ -294,27 +293,8 @@ const Matrix = {
 			}
 		}
 	},
-	neg:function(A){
-		//Returns -A
-		return this.multByScalar(A,-1);
-	},
-	transpose:function(A){
-		//Returns A'
-		if(this.isMatrix(A)){
-			let byCols = this.extractMatrixByCol(A);
-			let main = [];
-			for(let a of byCols){
-				main = main.concat(a);
-			}
-			let result = this.create(main,A.m,A.n);
-			return result;
-		}else {
-			throw new Error(this.Errors.notMatrix);
-		}
-	},
 	
-	
-	//Matrix: Types part:
+	//Type of matrices:
 	isSquare:function(A){
 		//Check if n = m
 		if(this.isMatrix(A)){
@@ -323,6 +303,7 @@ const Matrix = {
 			throw new Error("Given data is not a matrix");
 		}
 	},
+	
 	identity:function(order){
 		//Returns a identity matrix of the given order
 		if(isInt(order)){
@@ -449,6 +430,24 @@ const Matrix = {
 					break;
 				}
 			}
+			return result;
+		}else {
+			throw new Error(this.Errors.notMatrix);
+		}
+	},
+	neg:function(A){
+		//Returns -A
+		return this.multByScalar(A,-1);
+	},
+	transpose:function(A){
+		//Returns A'
+		if(this.isMatrix(A)){
+			let byCols = this.extractMatrixByCol(A);
+			let main = [];
+			for(let a of byCols){
+				main = main.concat(a);
+			}
+			let result = this.create(main,A.m,A.n);
 			return result;
 		}else {
 			throw new Error(this.Errors.notMatrix);
@@ -649,9 +648,18 @@ const Matrix = {
 			return false;
 		}
 	},
-	
-	
 	//Sub functions and other codes:
+	
+	//Errors:
+	Errors: {
+		notMatrix: "Given data is not a matrix",
+		notSq: "Given matrix is not a square matrix",
+		orderNotInt: "Order needs to be an integer",
+		invalid: "Given data is invalid",
+		noInverse: "The given matrix does not have an inverse",
+		noOrder: "Order of the matrix is not specified",
+	},
+	//Display:
 	toTable:function(A){
 		//Converts a matrix to a HTML table.
 		if(this.isMatrix(A)){
@@ -696,6 +704,7 @@ const Matrix = {
 			throw new Error(this.Errors.notMatrix);
 		}
 	},
+	//Expand:
 	expand:function(A){
 		//Expands a matrix and returns it in a object with each value indexed with indexes
 		if(this.isMatrix(A)){
@@ -777,15 +786,5 @@ const Matrix = {
 		}else {
 			throw new Error(this.noOrder);
 		}
-	},
-
-	//Errors:
-	Errors: {
-		notMatrix: "Given data is not a matrix",
-		notSq: "Given matrix is not a square matrix",
-		orderNotInt: "Order needs to be an integer",
-		invalid: "Given data is invalid",
-		noInverse: "The given matrix does not have an inverse",
-		noOrder: "Order of the matrix is not specified",
 	},
 }
