@@ -1,4 +1,4 @@
-var data = [
+const data = [
 	{
 		name:"WhatsApp message tool",
 		des:"A simple tool to message numbers without actually saving them in your phone. And also has some other things up its sleeves!",
