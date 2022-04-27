@@ -30,7 +30,7 @@ var data = [
 	}, {
 		name: "Flappy Box",
 		des: "Flappy Box; a simple clone of the iconic flappy bird.",
-		src: "projects/games/flappy-box",
+		src: "flappy-box",
 	}, {
 		name: "Cave Copter",
 		des: "A game where you survive with a faulty helicopter in a cave.",
