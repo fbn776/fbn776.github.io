@@ -12,17 +12,13 @@ var data = [
 		des:"A simple demonstration of added sine waves.",
 		src:"projects/other/sinWaves/index.html",
 	},{
-		name:"Simple particle sim",
-		des:"This is a simple charged particles sim written in js. And works using the Coulomb's inverse square law!",
-		src:"projects/other/particles_sim/index.html",
-	},{
 		name:"Matrix Calculator",
 		des:"A web app for doing calculations on matrices",
 		src:"projects/apps/matrixCalculator/index.html",
 	},{
 		name:"Camera to Ascii",
 		des: "A live camera to ascii text converter",
-		src:"projects/apps/ascii/index.html"
+		src:"cam-to-ascii"
 	}, {
 		name: "Falling Sand Game",
 		des: "A falling sand game using cellular automata.",
