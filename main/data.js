@@ -34,23 +34,9 @@ var data = [
 	}, {
 		name: "Cave Copter",
 		des: "A game where you survive with a faulty helicopter in a cave.",
-		src: "projects/games/cave-copter",
+		src: "copter",
 	}
 ];
-
-/*
-const Data = {
-	games: [
-		
-	],
-	tools: [
-		
-	],
-	misc: [
-		
-	]
-}
-*/
 
 //Sorts the data:
 data.sort(function(a,b){
