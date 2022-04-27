@@ -10,7 +10,7 @@ var data = [
 	},{
 		name:"Adding sine waves",
 		des:"A simple demonstration of added sine waves.",
-		src:"projects/other/sinWaves/index.html",
+		src:"sine-waves",
 	},{
 		name:"Matrix Calculator",
 		des:"A web app for doing calculations on matrices",
