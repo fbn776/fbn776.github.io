@@ -2,7 +2,7 @@ var data = [
 	{
 		name:"WhatsApp message tool",
 		des:"A simple tool to message numbers without actually saving them in your phone. And also has some other things up its sleeves!",
-		src:"projects/apps/whatsapp/index.html",
+		src:"whatsapp",
 	},{
 		name:"Space shooter",
 		des:"A simple space based shooter game written in js. It's not that developed. But still playable!",
