@@ -1,89 +1,94 @@
-function getAllCSSVariableNames(styleSheets = document.styleSheets){
-   var cssVars = [];
-   for(var i = 0; i < styleSheets.length; i++){
-      try{
-         for( var j = 0; j < styleSheets[i].cssRules.length; j++){
-            try{
-               for(var k = 0; k < styleSheets[i].cssRules[j].style.length; k++){
-                  let name = styleSheets[i].cssRules[j].style[k];
-                  if(name.startsWith('--') && cssVars.indexOf(name) == -1){
-                     cssVars.push(name);
-                  }
-               }
-            } catch (error) {}
-         }
-      } catch (error) {}
-   }
-   return cssVars;
+function getAllCSSVariableNames(styleSheets = document.styleSheets) {
+	var cssVars = [];
+	for (var i = 0; i < styleSheets.length; i++) {
+		try {
+			for (var j = 0; j < styleSheets[i].cssRules.length; j++) {
+				try {
+					for (var k = 0; k < styleSheets[i].cssRules[j].style.length; k++) {
+						let name = styleSheets[i].cssRules[j].style[k];
+						if (name.startsWith('--') && cssVars.indexOf(name) == -1) {
+							cssVars.push(name);
+						}
+					}
+				} catch (error) {}
+			}
+		} catch (error) {}
+	}
+	return cssVars;
 }
-function getElementCSSVariables (allCSSVars, element = document.body, pseudo){
-   var elStyles = window.getComputedStyle(element, pseudo);
-   var cssVars = {};
-   for(var i = 0; i < allCSSVars.length; i++){
-      let key = allCSSVars[i];
-      let value = elStyles.getPropertyValue(key)
-      if(value){cssVars[key] = value;}
-   }
-   return cssVars;
+
+function getElementCSSVariables(allCSSVars, element = document.body, pseudo) {
+	var elStyles = window.getComputedStyle(element, pseudo);
+	var cssVars = {};
+	for (var i = 0; i < allCSSVars.length; i++) {
+		let key = allCSSVars[i];
+		let value = elStyles.getPropertyValue(key)
+		if (value) { cssVars[key] = value; }
+	}
+	return cssVars;
 }
 
 //HTML elements functions
-function s(x){
-    return document.querySelector(x)
+function s(x) {
+	return document.querySelector(x)
 };
-function css(x,y){
-    return window.getComputedStyle(x).getPropertyValue(y);
+
+function css(x, y) {
+	return window.getComputedStyle(x).getPropertyValue(y);
 };
-HTMLElement.prototype.setProps = function(obj){
-	if(obj){
+HTMLElement.prototype.setProps = function(obj) {
+	if (obj) {
 		let keys = obj.getKeys();
-		for(let i of keys){
+		for (let i of keys) {
 			this[i] = obj[i];
 		}
 	}
 };
-HTMLElement.prototype.setStyle = function(obj){
-	if(obj){
+HTMLElement.prototype.setStyle = function(obj) {
+	if (obj) {
 		let keys = obj.getKeys();
-		for(let i of keys){
+		for (let i of keys) {
 			this.style[i] = obj[i];
 		}
 	}
 };
-HTMLElement.prototype.setAttr = function(obj){
-	if(obj){
+HTMLElement.prototype.setAttr = function(obj) {
+	if (obj) {
 		let keys = obj.getKeys();
-		for(let i of keys){
-			this.setAttribute(i,obj[i]);
+		for (let i of keys) {
+			this.setAttribute(i, obj[i]);
 		}
 	}
 };
 //Strings functions
-function small(x){
-    return x.toLowerCase()
+function small(x) {
+	return x.toLowerCase()
 };
-function big(x){
-    return x.toUpperCase()
+
+function big(x) {
+	return x.toUpperCase()
 };
-function jsonS(x){
+
+function jsonS(x) {
 	return JSON.stringify(x);
 };
-function jsonP(x){
+
+function jsonP(x) {
 	return JSON.parse(x);
 };
 
 //Objects and array functions
-Object.prototype.getKeys = function(){
+Object.prototype.getKeys = function() {
 	return Object.getOwnPropertyNames(this);
 };
-Object.prototype.getValues = function(){
+Object.prototype.getValues = function() {
 	let keys = this.getKeys();
 	let arr = [];
-	for(let n of keys){arr.push(this[n])};
+	for (let n of keys) { arr.push(this[n]) };
 	return arr;
 };
 Object.prototype.hasProp = function(key) {
-      return this?Object.prototype.hasOwnProperty.call(this,key):false;
+	return this ? Object.prototype.hasOwnProperty.call(this, key) : false;
 }
 
 
@@ -144,16 +149,27 @@ function setTheme(t) {
 			setRootStyle(ret, getRootStyle(str));
 		}
 	}
+};
 
-}
-function createPanel(name, des, link) {
+function createPanel(name, des, link, delay = 0) {
 	let a = document.createElement("a");
 	a.setAttr({
 		class: "projects",
 		href: link,
 	});
+	a.setStyle({
+		transform: `translateY(100%) scale(1.5)`,
+		opacity: 0,
+	})
+	a.style.transitionDelay = delay + "s";
 	a.innerHTML = `<name>${name}</name><des>${des}</des>`;
 	bottom.appendChild(a);
+	setTimeout(() => {
+		a.setStyle({
+			transform: "none",
+			opacity: 1,
+		})
+	}, 0);
 }
 
 ///////////------------>

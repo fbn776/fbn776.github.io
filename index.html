@@ -181,6 +181,11 @@
 		}
 
 		/*Bottom section styles*/
+		#bottom-section {
+			width: 100%;
+			overflow-x: hidden;
+		}
+
 		#projects_title {
 			width: 85%;
 			margin: auto;
@@ -203,6 +208,7 @@
 			display: inline-block;
 			cursor: none;
 			text-decoration: none;
+			transition: transform 0.2s , opacity 0.2s , background-color 0.2s , color 0.2s;
 		}
 
 		.projects name {
@@ -224,7 +230,6 @@
 			width: 100%;
 			height: 100%;
 			background-color: var(--bg-color);
-			/*rgba(0,0,0,0.5);*/
 			opacity: 0;
 			transition: opacity 0.2s;
 		}
@@ -251,6 +256,19 @@
 		.projects:hover::after {
 			transform: translateY(0px);
 		}
+		#endText {
+			width: 100%;
+			text-align: center;
+			padding: 20px 0px;
+			font-size: 13px;
+			opacity: 0.5;
+			font-weight: 800;
+			color: var(--main-text-color);
+		}
+		filler {
+			display: inline-block;
+			width: 100px;
+		}
 	</style>
 	<title>fbn776</title>
 </head>
@@ -275,6 +293,11 @@
 	<section id="bottom-section">
 		<p id="projects_title">Projects</p>
 	</section>
+	<p id="endText">
+		Thanks for visiting<br>
+		<filler></filler>- fbn776
+		<br><br>
+	</p>
 	<script>
 		var currTheme = localStorage.getItem("theme") || "light";
 		var css_root = document.querySelector(':root');
@@ -285,8 +308,10 @@
 	<script src="main/data.js"></script>
 	<script>
 		window.onload = function() {
+			let i = 0;
 			for (let a of data) {
-				createPanel(a.name, a.des, a.src);
+				createPanel(a.name, a.des, a.src, i);
+				i += 0.05;
 			}
 		}
 	</script>
