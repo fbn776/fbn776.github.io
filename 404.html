@@ -2,34 +2,54 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Error!</title>
-    <style>
-    	body {
-    		display:flex;
-    		height: 100vh;
-    		align-items: center;
-    		justify-content: center;
-    		font-family: monospace;
-    		font-weight: 700;
-    		background: #263238;
-    		color: #CFD8DC;
-    	}
-    	p {
-    		width:100%;
-    		position: fixed;
-    		left:0px;
-    		bottom:1%;
-    		text-align: center;
-    		opacity: 0.1;
-    	}
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Error!</title>
+	<style>
+		body {
+			display: flex;
+			height: 100vh;
+			align-items: center;
+			justify-content: center;
+			font-family: monospace;
+			font-weight: 700;
+		}
+
+		div {
+			text-align: center;
+			padding: 0px 5px;
+		}
+
+		#trademark {
+			padding: 0px;
+			position: fixed;
+			left: 10px;
+			bottom: 0px;
+			font-size: 10px;
+			text-align: center;
+			opacity: 0.3;
+		}
+		#goHome {
+			transform: scale(1);
+			position: relative;
+			width: 100%;
+			text-align: center;
+			top: 20px;
+			cursor: none;
+			font-size: 14px;
+			text-decoration: none;
+			color: rgba(30, 30, 30, 0.6);
+		}
+	</style>
 </head>
 
 <body>
-	<h1>Hello?</h1>
-	<p>fbn776</p>
+	<div>
+		<h1>404 Error</h1>
+		<p>The website you're looking for doesn't exists or maybe changed its adress :(</p>
+		<a id="goHome" href="https://fbn776.github.io/">Go Home</a>
+	</div>
+	<p id="trademark">fbn776</p>
 </body>
 
 </html>
