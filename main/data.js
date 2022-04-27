@@ -6,7 +6,7 @@ var data = [
 	},{
 		name:"Space shooter",
 		des:"A simple space based shooter game written in js. It's not that developed. But still playable!",
-		src:"projects/games/shooter/index.html"
+		src:"shooter"
 	},{
 		name:"Adding sine waves",
 		des:"A simple demonstration of added sine waves.",
