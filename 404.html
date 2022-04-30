@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,16 +39,26 @@
 			text-decoration: none;
 			color: rgba(30, 30, 30, 0.6);
 		}
+		#bg {
+			position: fixed;
+			top:0;
+			left:0;
+			bottom: 0;
+			right: 0;
+			z-index: -100;
+		}
 	</style>
 </head>
 
 <body>
+	<canvas id="bg"></canvas>
 	<div>
 		<h1>404 Error</h1>
-		<p>The website you're looking for doesn't exists or maybe changed its adress :(</p>
+		<p>The website you're looking for doesn't exists or might have changed it's location :(</p>
 		<a id="goHome" href="https://fbn776.github.io/">Go Home</a>
 	</div>
 	<p id="trademark">fbn776</p>
+	<script src="main/404_anim.js"></script>
 </body>
 
 </html>
