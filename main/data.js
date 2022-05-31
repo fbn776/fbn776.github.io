@@ -31,6 +31,10 @@ const data = [
 		name: "Cave Copter",
 		des: "A game where you survive with a faulty helicopter in a cave.",
 		src: "copter",
+	}, {
+	  name: "Charges simulation",
+	  des: "A simple physics simulation of charges using the Coulomb's inverse square law.",
+	  src: "Charges-sim"
 	}
 ];
 
