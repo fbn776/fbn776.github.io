@@ -35,6 +35,10 @@ const data = [
 	  name: "Charges simulation",
 	  des: "A simple physics simulation of charges using the Coulomb's inverse square law.",
 	  src: "Charges-sim"
+	}, {
+		name: "Pattern Lock Predictor",
+		des: "A random algorithm to find the possible pattern for a given set of inputs (start pos, end pos, no of moves etc)",
+		src: "Pattern-lock-predictor"
 	}
 ];
 
